@@ -1,5 +1,7 @@
 #include "grafyLepsze.h"
 
+
+//Macierz Sasiedztwa
 void utworzMacSas(int v)
 {
     macSas = new short * [v];
@@ -12,13 +14,27 @@ void utworzMacSas(int v)
     }
 }
 
-int dodajDoMacSas(int x, int y)
+void dodajDoMacSas(int x, int y)
 {
     macSas[x][y] = 1;
     macSas[y][x] = 1;
-    return 0;
 }
 
+short ** kopiujMacSas()
+{
+    short ** out = new short * [v];
+    for(int i=0; i<v; i++)
+        out[i] = new short[v];
+    for(int i=0; i<v; i++)
+    {
+        for(int j=0; j<v; j++)
+            out[i][j] = macSas[i][j];
+    }
+    return out;
+}
+
+
+//Lista Nastepnikow
 void utworzLisNast(int v)
 {
     lisNast = new listaElem * [v];
@@ -47,6 +63,35 @@ void dodajDoLisNast(int x, int y)
     }
 }
 
+listaElem ** kopiujLisNast()
+{
+    listaElem ** out = new listaElem * [v];
+    for(int i=0; i<v; i++)
+    {
+        if(lisNast[i])
+        {
+            listaElem * stary = lisNast[i];
+            listaElem * nowy = new listaElem;
+            out[i] = nowy;
+            nowy->dane = stary->dane;
+            while(stary->next)
+            {
+                nowy->next = new listaElem;
+                nowy->next->dane = stary->next->dane;
+                nowy = nowy->next;
+                stary = stary->next;
+            }
+            nowy->next = NULL;
+        }
+        else
+            out[i] = NULL;
+
+    }
+    return out;
+}
+
+
+//opcje tworzenia konsola
 void utworzLosowo() //nowe dostosowane do cykli
 {
     cout << "Tworzenie grafu losowo." << endl;

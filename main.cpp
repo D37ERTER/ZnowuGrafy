@@ -10,7 +10,7 @@ auto end = chrono::steady_clock::now();
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.3)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.4)" << endl;
     int opcjaI;
     bool zamykanie = false;
     while(!zamykanie)
@@ -54,10 +54,10 @@ int main()
             szukajHamiltonListNast();
             break;
         case 8:
-            szukajEulerMacSas();
+            szukajEulerMacSas(kopiujMacSas(), v, e);
             break;
         case 9:
-            szukajEulerListNast();
+            szukajEulerListNast(kopiujLisNast(), v, e);
             break;
         case 10:
             // TODO usuwanie

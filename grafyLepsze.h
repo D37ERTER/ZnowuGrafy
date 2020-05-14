@@ -33,6 +33,8 @@
     void wypiszLisNast();
 
     //funckcje tworzenia grafow
+    short ** kopiujMacSas();
+    listaElem ** kopiujLisNast();
     void utworzLosowo();
     void utworzLosowoTest(int wierzcholki, int procenty);
     void utworzZKonsoli();
@@ -43,8 +45,8 @@
     void szukajHamiltonListNast();
 
     //funkcje wyszukiwania Euler
-    void szukajEulerMacSas();
-    void szukajEulerListNast();
+    void szukajEulerMacSas(short ** macSas, int v, int e);
+    void szukajEulerListNast(listaElem ** lisNast, int v, int e);
 
 
 

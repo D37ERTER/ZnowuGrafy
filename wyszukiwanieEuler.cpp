@@ -1,11 +1,11 @@
 #include "grafyLepsze.h"
 
-void szukajEulerMacSas()
+void szukajEulerMacSas(short ** macSas, int v, int e)
 {
 
 }
 
-void szukajEulerListNast()
+void szukajEulerListNast(listaElem ** lisNast, int v, int e)
 {
 
 }
