@@ -10,3 +10,4 @@ bin/Debug/ZnowuGrafy.exe
 obj/Debug/wyszukiwanieEuler.o
 obj/Debug/wyszukiwanieHamilton.o
 ZnowuGrafy.depend
+ZnowuGrafy.cbp
