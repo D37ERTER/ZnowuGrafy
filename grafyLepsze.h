@@ -20,7 +20,6 @@
     extern int v, e;
     extern short ** macSas;
     extern listaElem ** lisNast;
-    extern short ** macGrafu;
 
     //funkcje konsola
     int toInt(string s);
@@ -32,21 +31,19 @@
     //funkcje wypisywania grafow
     void wypiszMacSas();
     void wypiszLisNast();
-    void wypiszMacGrafu();
 
     //funckcje tworzenia grafow
     void utworzLosowo(int wierzcholki, int procenty);
     void utworzZKonsoli();
     void utworzZPliku();
 
-    //funkcje sortowania DFS
-    void sortujDFS_msasiedztwa();
-    void sortujDFS_lnastepnikow();
-    void sortujDFS_mgrafu();
+    //funkcje wyszukiwania Euler
+    void szukajEulerMacSas();
+    void szukajEulerListNast();
 
-    //funkcje sortowania DEL
-    void sortujDEL_msasiedztwa();
-    void sortujDEL_lnastepnikow();
-    void sortujDEL_mgrafu();
+    //funkcje wyszukiwania Hamilton
+    void szukajHamiltonMacSas();
+    void szukajHamiltonListNast();
+
 
 #endif

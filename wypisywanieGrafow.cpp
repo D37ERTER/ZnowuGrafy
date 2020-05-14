@@ -26,14 +26,3 @@ void wypiszLisNast()
         cout << endl;
     }
 }
-
-void wypiszMacGrafu()
-{
-    cout << "Wypisywanie macierzy grafu: " << endl;
-    for(int i=0; i<v; i++)
-    {
-        for(int j=0; j<v+3; j++)
-        	wypEl(macGrafu[i][j]);
-        cout << endl;
-    }
-}

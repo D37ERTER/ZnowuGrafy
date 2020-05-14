@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1588193777 source:c:\users\d37erter\desktop\cpp\znowugrafy\konsola.cpp
+	"grafyLepsze.h"
+
+1589448492 c:\users\d37erter\desktop\cpp\znowugrafy\grafylepsze.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<time.h>
+	<queue>
+	<chrono>
+
+1588200480 source:c:\users\d37erter\desktop\cpp\znowugrafy\sortowaniadel.cpp
+	"grafyLepsze.h"
+
+1588198993 source:c:\users\d37erter\desktop\cpp\znowugrafy\sortowaniadfs.cpp
+	"grafyLepsze.h"
+

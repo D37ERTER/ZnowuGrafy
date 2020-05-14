@@ -4,14 +4,13 @@
 int v, e;
 short ** macSas;
 listaElem ** lisNast;
-short ** macGrafu;
 auto start = chrono::steady_clock::now();
 auto end = chrono::steady_clock::now();
 
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w prawie najlepszym programie do sortowania grafow. (v 0.3.0)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.1)" << endl;
     int opcjaI;
     bool zamykanie = false;
     while(!zamykanie)
@@ -23,14 +22,11 @@ int main()
         cout << "3 - Utworz graf z pliku" << endl;
         cout << "4 - Wyswietl graf - Macierz sasiedztwa" << endl;
         cout << "5 - Wyswietl graf - Lista nastepnikow" << endl;
-        cout << "6 - Wyswietl graf - Macierz grafu" << endl;
-        cout << "7 - Sortuj topologicznie graf - DFS - Macierz sasiedztwa" << endl;
-        cout << "8 - Sortuj topologicznie graf - DFS - Lista nastepnikow" << endl;
-        cout << "9 - Sortuj topologicznie graf - DFS - Macierz grafu (nie dziala)" << endl;
-        cout << "10 - Sortuj topologicznie graf - Usuwanie zerowego stopnia - Macierz sasiedztwa" << endl;
-        cout << "11 - Sortuj topologicznie graf - Usuwanie zerowego stopnia - Lista nastepnikow" << endl;
-        cout << "12 - Sortuj topologicznie graf - Usuwanie zerowego stopnia - Macierz grafu (nie dziala)" << endl;
-        cout << "13 - Zamknij program" << endl;
+        cout << "6 - Szukaj cykl Hamiltona - Macierz sasiedztwa" << endl;
+        cout << "7 - Szukaj cykl Hamiltona - Lista nastepnikow" << endl;
+        cout << "8 - Szukaj cykl Eulera  - Macierz sasiedztwa" << endl;
+        cout << "9 - Szukaj cykl Eulera  - Lista nastepnikow" << endl;
+        cout << "10 - Zamknij program" << endl;
         cout << endl;
         opcjaI = zKonsoli(0, 13, "","Bledne polecenie.");
 
@@ -52,27 +48,18 @@ int main()
             wypiszLisNast();
             break;
         case 6:
-            wypiszMacGrafu();
+
             break;
         case 7:
-            sortujDFS_msasiedztwa();
+
             break;
         case 8:
-            sortujDFS_lnastepnikow();
+
             break;
         case 9:
-            sortujDFS_mgrafu();
+
             break;
         case 10:
-            sortujDEL_msasiedztwa();
-            break;
-        case 11:
-            sortujDEL_lnastepnikow();
-            break;
-        case 12:
-            sortujDEL_mgrafu();
-            break;
-        case 14:
             // TODO usuwanie
             cout << "Konczenie pracy programu" << endl;
             zamykanie = true;
