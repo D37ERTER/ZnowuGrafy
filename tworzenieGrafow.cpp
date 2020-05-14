@@ -23,9 +23,7 @@ void utworzLisNast(int v)
 {
     lisNast = new listaElem * [v];
     for(int i=0; i<v; i++)
-    {
         lisNast[i] = NULL;
-    }
 }
 
 void dodajDoLisNast(int x, int y)
@@ -67,14 +65,14 @@ int * stworzLosoweWierzcholki(int v)
     return losoweWierzcholki;
 }
 
-void utworzLosowo(int wierzcholki, int procenty) //szybkie jak błyskawica
+void utworzLosowo() //szybkie jak błyskawica
 {
     cout << "Tworzenie grafu losowo." << endl;
-    v = wierzcholki;
-    e = v*(v-1)*procenty/200;
+    v = zKonsoli(0, 2000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 2000)");
+    int p = zKonsoli(0, 2000, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
+    e = v*(v-1)*p/200;
     utworzMacSas(v);
     utworzLisNast(v);
-    utworzMacGrafu(v);
     cout << "Tworzenie losowej tablicy." << endl;
     int * losoweWierzcholki = stworzLosoweWierzcholki(v);
     cout << "Losowanie lukow." << endl;
@@ -110,7 +108,51 @@ void utworzLosowo(int wierzcholki, int procenty) //szybkie jak błyskawica
         dodajDoLisNast(x, y);
     }
     cout << "100%" << endl;
-    wypelnijMacGrafu();
+}
+
+void utworzLosowoTest(int wierzcholki, int procenty) //szybkie jak błyskawica
+{
+    cout << "Tworzenie grafu losowo." << endl;
+    v = wierzcholki;
+    int p = procenty;
+    e = v*(v-1)*p/200;
+    utworzMacSas(v);
+    utworzLisNast(v);
+    cout << "Tworzenie losowej tablicy." << endl;
+    int * losoweWierzcholki = stworzLosoweWierzcholki(v);
+    cout << "Losowanie lukow." << endl;
+    int maxE = v*(v-1)/2; // max numer luku
+    bool wylosowaneLuki[maxE];
+    for(int i=0; i<maxE ;i++)
+        wylosowaneLuki[i] = false;
+    int wylos; // wylosowany numer luku
+    int s; //suma (prog do kolejnej dlugosci; suma pierwszych n elementow zbioru [v-1, v-2, v-3, ..., 3, 2, 1])
+    int dlugosc; //dlugosc luku
+    int zaczepienie; //index losowego wierzcholka z ktorego zaczyna sie luk
+    int x; //poczatek luku w "poprawnej" numeracji
+    int y; //koniec luku w "poprawnej" numeracji
+
+    cout <<"ilosc: " << e << endl;
+    for(int i=0; i<e; i++) // i - index luku
+    {
+        if(e>10 &&!(i%(e/10)))
+            cout << (i*100)/e << "%  " << endl;
+        do
+            wylos = (rand()*rand()) % maxE;
+        while(wylosowaneLuki[wylos]);
+        wylosowaneLuki[wylos] = true;
+        s = v-1;
+        dlugosc = 1;
+        while(wylos >= s)
+            s += v - ++dlugosc;
+        zaczepienie = wylos - s + v -dlugosc;
+        x = losoweWierzcholki[zaczepienie];
+        y = losoweWierzcholki[zaczepienie+dlugosc];
+        if(dodajDoMacSas(x, y))
+            cout << "Blad :C" << endl;
+        dodajDoLisNast(x, y);
+    }
+    cout << "100%" << endl;
 }
 
 void utworzZKonsoli()
@@ -120,7 +162,6 @@ void utworzZKonsoli()
     e = zKonsoli(0,v*(v-1)*0.5,"podaj ilosc lukow: ", "Nie poprawna ilosc.");
     utworzMacSas(v);
     utworzLisNast(v);
-    utworzMacGrafu(v);
     cout << "Wprowadzanie lukow z konsoli." << endl;
     int err; //kod bledu
     int x, y; //poczatek i koniec lukow
@@ -143,7 +184,6 @@ void utworzZKonsoli()
         while(err<0);
         dodajDoLisNast(x, y);
     }
-    wypelnijMacGrafu();
 }
 
 void utworzZPliku()
@@ -166,7 +206,6 @@ void utworzZPliku()
         }
         utworzMacSas(v);
         utworzLisNast(v);
-        utworzMacGrafu(v);
         int err; //kod bledu
         int x, y; //poczatek i koniec lukow
         while(!plik.eof())
@@ -189,7 +228,6 @@ void utworzZPliku()
             }
             dodajDoLisNast(x, y);
         }
-        wypelnijMacGrafu();
     }
     else
     {

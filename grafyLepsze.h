@@ -33,17 +33,20 @@
     void wypiszLisNast();
 
     //funckcje tworzenia grafow
-    void utworzLosowo(int wierzcholki, int procenty);
+    void utworzLosowo();
+    void utworzLosowoTest(int wierzcholki, int procenty);
     void utworzZKonsoli();
     void utworzZPliku();
+
+    //funkcje wyszukiwania Hamilton
+    void szukajHamiltonMacSas();
+    void szukajHamiltonListNast();
 
     //funkcje wyszukiwania Euler
     void szukajEulerMacSas();
     void szukajEulerListNast();
 
-    //funkcje wyszukiwania Hamilton
-    void szukajHamiltonMacSas();
-    void szukajHamiltonListNast();
+
 
 
 #endif

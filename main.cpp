@@ -10,7 +10,7 @@ auto end = chrono::steady_clock::now();
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.1)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.2)" << endl;
     int opcjaI;
     bool zamykanie = false;
     while(!zamykanie)
@@ -33,7 +33,7 @@ int main()
         switch(opcjaI)
         {
         case 1:
-            utworzLosowo(2000, 50);
+            utworzLosowo();
             break;
         case 2:
             utworzZKonsoli();
@@ -48,16 +48,16 @@ int main()
             wypiszLisNast();
             break;
         case 6:
-
+            szukajHamiltonMacSas();
             break;
         case 7:
-
+            szukajHamiltonListNast();
             break;
         case 8:
-
+            szukajEulerMacSas();
             break;
         case 9:
-
+            szukajEulerListNast();
             break;
         case 10:
             // TODO usuwanie
