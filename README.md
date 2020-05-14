@@ -7,10 +7,16 @@ Polecam : zielony przycik po prawej -> download zip
 # Zadanie 4: Algorytmy z powracaniem
 # I program  
 Zaimplementuj algorytm z powracaniem znajdujący cykl Hamiltona w grafie nieskierowanym (na macierzy sąsiedztwa) i w grafie skierowanym (na liście następników).
+
 Zaimplementuj algorytm z powracaniem znajdujący cykl Eulera w grafie nieskierowanym (na macierzy sąsiedztwa) i w grafie skierowanym (na liście następników).
+
 W przypadku braku poszukiwanego cyklu w grafie należy wyświetlić komunikat: Graf wejściowy nie zawiera cyklu.
+
 Jeśli poszukiwany cykl istnieje program wypisuje go w postaci listy wierzchołków, przez które przechodzi cykl.
-Program powinien mieć możliwość wczytywania danych z klawiatury oraz z pliku tekstowego zawierającego graf zapisany w postaci listy krawędzi, gdzie para liczb w pierwszej linii to informacja o liczbie wieczchołków i liczbie krawędzi/łuków, a pary w kolejnych liniach to pary wierzchołków połączonych krawędzią/łukiem. Spacja jest separatorem liczb w pojedynczej linii.
+
+Program powinien mieć możliwość wczytywania danych z klawiatury
+
+oraz z pliku tekstowego zawierającego graf zapisany w postaci listy krawędzi, gdzie para liczb w pierwszej linii to informacja o liczbie wieczchołków i liczbie krawędzi/łuków, a pary w kolejnych liniach to pary wierzchołków połączonych krawędzią/łukiem. Spacja jest separatorem liczb w pojedynczej linii.
 
 # II testy
 Wygeneruj grafy nieskierowane i skierowane o n wierzchołkach i współczynniku nasycenia krawędziami równym s={10,20,30,40,50,60,70,80,90} (dla wszystkich 9-ciu wartości) oraz dla 10-15 różnych wartości n z przedziału <10,k> (k należy dobrać eksperymentalnie tak, aby możliwe było wykonanie pomiarów i aby jego wartość była możliwie duża).
