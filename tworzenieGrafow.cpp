@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 int dodajDoMacSas(int x, int y)
 {
     macSas[x][y] = 1;
-    macSas[y][x] = -1;
+    macSas[y][x] = 1;
     return 0;
 }
 
