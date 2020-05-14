@@ -10,7 +10,7 @@ auto end = chrono::steady_clock::now();
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.2)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.3)" << endl;
     int opcjaI;
     bool zamykanie = false;
     while(!zamykanie)

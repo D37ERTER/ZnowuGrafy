@@ -99,8 +99,7 @@ void utworzLosowoTest(int wierzcholki, int procenty) //nowe dostosowane do cykli
         wylosowaneLuki[i] = false;
     int wylos; // wylosowany numer luku
     int wylosOdrot; //numer luku w druga strone (trzeba go też zablokowac)
-    int x; //poczatek luku
-    int y; //koniec luku
+    int x, y; //poczatek i koniec lukow
 
     for(int i=0; i<e; i++) // i - index luku
     {
@@ -128,7 +127,6 @@ void utworzZKonsoli()
     utworzMacSas(v);
     utworzLisNast(v);
     cout << "Wprowadzanie lukow z konsoli." << endl;
-    int err; //kod bledu
     int x, y; //poczatek i koniec lukow
     for(int i=0; i<e; i++)
     {
@@ -136,16 +134,11 @@ void utworzZKonsoli()
         {
             x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
             y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
-
-            err = dodajDoMacSas(x, y);
-            if(err == -1)
-                cout << "Luki nie moga byc petlami wlasnymi (nie moga wychodzic i wchodzic do tego samego wierzcholka)." << endl;
-            else if(err == -2)
-                cout << "Taki luk juz istnieje (nie ma multigrafow)." << endl;
-            else if(err == -3)
-                cout << "Taki luk spowoduje cykl." << endl;
+            if(macSas[x][y] != 0)
+                cout << "Taka krawedz juz istnieje." << endl;
         }
-        while(err<0);
+        while(macSas[x][y] == 0);
+        dodajDoMacSas(x, y);
         dodajDoLisNast(x, y);
     }
 }
@@ -158,44 +151,35 @@ void utworzZPliku()
     cout << "podaj lokalizacje pliku: ";
     cin >> loc;
     plik.open(loc.c_str(), ios::in);
-    if(plik.good())
+    if(!plik.good())
     {
-        plik >> v;
-        plik >> e;
-        if(e>v*(v-1)*0.5)
+        cout << "Niepoprawna lokalizacja. :C";
+        plik.close();
+        return;
+    }
+    plik >> v;
+    plik >> e;
+    if(e>v*(v-1)*0.5)
+    {
+        cout << "Zbyt duzo lukow." << endl;
+        plik.close();
+        return;
+    }
+    utworzMacSas(v);
+    utworzLisNast(v);
+    int x, y; //poczatek i koniec lukow
+    while(!plik.eof())
+    {
+        plik >> x;
+        plik >> y;
+        if(macSas[x][y] != 0)
         {
-            cout << "Zbyt duzo lukow." << endl;
+            cout << "Graf zapisany w plku jest multigrafem." << endl;
             plik.close();
             return;
         }
-        utworzMacSas(v);
-        utworzLisNast(v);
-        int err; //kod bledu
-        int x, y; //poczatek i koniec lukow
-        while(!plik.eof())
-        {
-            plik >> x;
-            plik >> y;
-            x--;
-            y--;
-            err = dodajDoMacSas(x, y);
-            if(err == -1)
-                cout << "Plik zawiera wierzolki z petlami wlasnymi." << endl;
-            else if(err == -2)
-                cout << "Graf zapisany w plku jest multigrafem." << endl;
-            else if(err == -3)
-                cout << "Graf posiada cykl." << endl;
-            if(err < 0)
-            {
-                plik.close();
-                return;
-            }
-            dodajDoLisNast(x, y);
-        }
-    }
-    else
-    {
-        cout << "Niepoprawna lokalizacja. :C";
+        dodajDoMacSas(x-1, y-1);
+        dodajDoLisNast(x, y);
     }
     plik.close();
 }
