@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="grafyLepsze.h" />
+		<Unit filename="konsola.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="tworzenieGrafow.cpp" />
+		<Unit filename="wypisywanieGrafow.cpp" />
+		<Unit filename="wyszukiwanieEuler.cpp" />
+		<Unit filename="wyszukiwanieHamilton.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
