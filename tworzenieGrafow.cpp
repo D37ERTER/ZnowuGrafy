@@ -47,45 +47,23 @@ void dodajDoLisNast(int x, int y)
     }
 }
 
-int * stworzLosoweWierzcholki(int v)
-{
-    int * losoweWierzcholki = new int[v];
-    bool wylosowaneWiercholki[v];
-    for(int i=0; i<v ;i++)
-        wylosowaneWiercholki[i] = false;
-
-    for(int i=0; i<v; i++)
-    {
-        do
-            losoweWierzcholki[i] = rand() % v;
-        while(wylosowaneWiercholki[losoweWierzcholki[i]]);
-        wylosowaneWiercholki[losoweWierzcholki[i]] = true;
-    }
-    delete wylosowaneWiercholki;
-    return losoweWierzcholki;
-}
-
-void utworzLosowo() //szybkie jak błyskawica
+void utworzLosowo() //nowe dostosowane do cykli
 {
     cout << "Tworzenie grafu losowo." << endl;
-    v = zKonsoli(0, 2000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 2000)");
-    int p = zKonsoli(0, 2000, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
+    v = zKonsoli(0, 2000, "podaj ilosc wierzcholkow: ", "Niepoprawna ilosc. (musi byc od 0 do 2000)");
+    int p = zKonsoli(0, 2000, "podaj procent nasycenia krawedziami [%]: ", "Niepoprawna ilosc procent.");
     e = v*(v-1)*p/200;
     utworzMacSas(v);
     utworzLisNast(v);
-    cout << "Tworzenie losowej tablicy." << endl;
-    int * losoweWierzcholki = stworzLosoweWierzcholki(v);
     cout << "Losowanie lukow." << endl;
-    int maxE = v*(v-1)/2; // max numer luku
-    bool wylosowaneLuki[maxE];
+    int maxE = v*(v-1); // max numer luku
+    bool wylosowaneLuki[maxE]; //true jeżeli luk już istnieje
     for(int i=0; i<maxE ;i++)
         wylosowaneLuki[i] = false;
     int wylos; // wylosowany numer luku
-    int s; //suma (prog do kolejnej dlugosci; suma pierwszych n elementow zbioru [v-1, v-2, v-3, ..., 3, 2, 1])
-    int dlugosc; //dlugosc luku
-    int zaczepienie; //index losowego wierzcholka z ktorego zaczyna sie luk
-    int x; //poczatek luku w "poprawnej" numeracji
-    int y; //koniec luku w "poprawnej" numeracji
+    int wylosOdrot; //numer luku w druga strone (trzeba go też zablokowac)
+    int x; //poczatek luku
+    int y; //koniec luku
 
     cout <<"ilosc: " << e << endl;
     for(int i=0; i<e; i++) // i - index luku
@@ -95,71 +73,58 @@ void utworzLosowo() //szybkie jak błyskawica
         do
             wylos = (rand()*rand()) % maxE;
         while(wylosowaneLuki[wylos]);
+
+        x = wylos/(v-1);
+        y = wylos%(v-1);
+        y += (x <= y);
+        wylosOdrot = y*(v-1) + x - (y<x);
         wylosowaneLuki[wylos] = true;
-        s = v-1;
-        dlugosc = 1;
-        while(wylos >= s)
-            s += v - ++dlugosc;
-        zaczepienie = wylos - s + v -dlugosc;
-        x = losoweWierzcholki[zaczepienie];
-        y = losoweWierzcholki[zaczepienie+dlugosc];
-        if(dodajDoMacSas(x, y))
-            cout << "Blad :C" << endl;
+        wylosowaneLuki[wylosOdrot] = true;
+
+        dodajDoMacSas(x, y);
         dodajDoLisNast(x, y);
     }
     cout << "100%" << endl;
 }
 
-void utworzLosowoTest(int wierzcholki, int procenty) //szybkie jak błyskawica
+void utworzLosowoTest(int wierzcholki, int procenty) //nowe dostosowane do cykli (wersja do testów na sprawozdanie)
 {
-    cout << "Tworzenie grafu losowo." << endl;
     v = wierzcholki;
-    int p = procenty;
-    e = v*(v-1)*p/200;
+    e = v*(v-1)*procenty/200;
     utworzMacSas(v);
     utworzLisNast(v);
-    cout << "Tworzenie losowej tablicy." << endl;
-    int * losoweWierzcholki = stworzLosoweWierzcholki(v);
-    cout << "Losowanie lukow." << endl;
-    int maxE = v*(v-1)/2; // max numer luku
-    bool wylosowaneLuki[maxE];
+    int maxE = v*(v-1); // max numer luku
+    bool wylosowaneLuki[maxE]; //true jeżeli luk już istnieje
     for(int i=0; i<maxE ;i++)
         wylosowaneLuki[i] = false;
     int wylos; // wylosowany numer luku
-    int s; //suma (prog do kolejnej dlugosci; suma pierwszych n elementow zbioru [v-1, v-2, v-3, ..., 3, 2, 1])
-    int dlugosc; //dlugosc luku
-    int zaczepienie; //index losowego wierzcholka z ktorego zaczyna sie luk
-    int x; //poczatek luku w "poprawnej" numeracji
-    int y; //koniec luku w "poprawnej" numeracji
+    int wylosOdrot; //numer luku w druga strone (trzeba go też zablokowac)
+    int x; //poczatek luku
+    int y; //koniec luku
 
-    cout <<"ilosc: " << e << endl;
     for(int i=0; i<e; i++) // i - index luku
     {
-        if(e>10 &&!(i%(e/10)))
-            cout << (i*100)/e << "%  " << endl;
         do
             wylos = (rand()*rand()) % maxE;
         while(wylosowaneLuki[wylos]);
+
+        x = wylos/(v-1);
+        y = wylos%(v-1);
+        y += (x <= y);
+        wylosOdrot = y*(v-1) + x - (y<x);
         wylosowaneLuki[wylos] = true;
-        s = v-1;
-        dlugosc = 1;
-        while(wylos >= s)
-            s += v - ++dlugosc;
-        zaczepienie = wylos - s + v -dlugosc;
-        x = losoweWierzcholki[zaczepienie];
-        y = losoweWierzcholki[zaczepienie+dlugosc];
-        if(dodajDoMacSas(x, y))
-            cout << "Blad :C" << endl;
+        wylosowaneLuki[wylosOdrot] = true;
+
+        dodajDoMacSas(x, y);
         dodajDoLisNast(x, y);
     }
-    cout << "100%" << endl;
 }
 
 void utworzZKonsoli()
 {
     cout << "Tworzenie grafu z konsoli." << endl;
-    v = zKonsoli(0,1000,"podaj ilosc wierzcholkow: ", "Nie poprawna ilosc.");
-    e = zKonsoli(0,v*(v-1)*0.5,"podaj ilosc lukow: ", "Nie poprawna ilosc.");
+    v = zKonsoli(0,1000,"podaj ilosc wierzcholkow: ", "Niepoprawna ilosc.");
+    e = zKonsoli(0,v*(v-1)*0.5,"podaj ilosc lukow: ", "Niepoprawna ilosc.");
     utworzMacSas(v);
     utworzLisNast(v);
     cout << "Wprowadzanie lukow z konsoli." << endl;
@@ -169,10 +134,9 @@ void utworzZKonsoli()
     {
         do
         {
-            x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
-            y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
-            x--;
-            y--;
+            x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
+            y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
+
             err = dodajDoMacSas(x, y);
             if(err == -1)
                 cout << "Luki nie moga byc petlami wlasnymi (nie moga wychodzic i wchodzic do tego samego wierzcholka)." << endl;
