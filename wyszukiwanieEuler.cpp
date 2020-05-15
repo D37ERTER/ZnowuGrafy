@@ -9,3 +9,9 @@ void szukajEulerListNast()
 {
 
 }
+
+tproc euler[]=
+{
+	szukajEulerMacSas,
+	szukajEulerListNast
+};

@@ -60,24 +60,3 @@ void wypEl(int element)
     cout<<element;
     for (int i=0;i<to_string(v).size()+2-to_string(element).size();i++) cout<<" ";
 }
-
-void usunMacSas()
-{
-	macSas.clear();
-}
-
-void usunLisNast()
-{
-	listaElem*usun;
-	for (int i=1;i<v;i++)
-		{
-			while(lisNast[i]!=lisNast[i]->next)
-			{
-				usun=lisNast[i]->next;
-				lisNast[i]->next=lisNast[i]->next->next;
-				delete usun;
-			}
-			delete lisNast[i];
-		}
-	delete [] lisNast;
-}

@@ -9,3 +9,9 @@ void szukajHamiltonListNast()
 {
 
 }
+
+tproc hamilton[]=
+{
+	szukajHamiltonMacSas,
+	szukajHamiltonListNast
+};
