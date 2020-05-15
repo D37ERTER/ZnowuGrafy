@@ -38,7 +38,7 @@ bool znajdzMacSas(int x, int y)
 bool znajdzLisNast(int x, int y)
 {
 	listaElem * teraz = lisNast[x];
-	while(teraz && teraz->dane<y)
+	while(teraz && teraz->dane <=y)
 	{
 		if(teraz->dane==y)
 			return true;

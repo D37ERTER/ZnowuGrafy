@@ -16,7 +16,7 @@ void wypiszLisNast()
     cout << "Wypisywanie listy nastepnikow: " << endl;
     for(int i=1; i<v+1; i++)
     {
-        cout << i;
+        cout << i << ": ";
         listaElem * e = lisNast[i];
         while(e)
         {
