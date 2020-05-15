@@ -3,9 +3,9 @@
 void wypiszMacSas()
 {
     cout << "Wypisywanie macierzy sasiectwa: " << endl;
-    for(int i=0; i<v; i++)
+    for(int i=1; i<macSas.size(); i++)
     {
-        for(int j=0; j<v; j++)
+        for(int j=1; j<macSas[i].size(); j++)
         	wypEl(macSas[i][j]);
         cout << endl;
     }
@@ -14,15 +14,21 @@ void wypiszMacSas()
 void wypiszLisNast()
 {
     cout << "Wypisywanie listy nastepnikow: " << endl;
-    for(int i=0; i<v; i++)
+    for(int i=1; i<v+1; i++)
     {
-        cout << i+1;
+        cout << i;
         listaElem * e = lisNast[i];
         while(e)
         {
-            cout << "->" << e->dane+1;
+            cout << "->" << e->dane;
             e = e->next;
         }
         cout << endl;
     }
 }
+
+tproc wysw[]=
+{
+	wypiszMacSas,
+	wypiszLisNast
+};

@@ -7,8 +7,14 @@
     #include <time.h>   //random
     #include <queue> //kolejka
     #include <chrono> //czas
+	#include <vector>
 
     using namespace std;
+
+	typedef void (*tproc)();
+	typedef void (*tproc1arg)(int v);
+	typedef void (*tproc2arg)(int x, int y);
+	typedef bool (*tbool)(int x, int y);
 
     //struktury
     struct listaElem
@@ -16,10 +22,12 @@
         listaElem * next;
         short dane;
     };
-    //zmienne globalne (main) - grafy
+    //grafy
     extern int v, e;
-    extern short ** macSas;
+    extern vector<vector<short>> macSas;
     extern listaElem ** lisNast;
+    extern bool czySkierowany;
+    extern bool czyPusto;
 
     //funkcje konsola
     int toInt(string s);
@@ -29,26 +37,22 @@
     void wypEl(int element);
 
     //funkcje wypisywania grafow
-    void wypiszMacSas();
-    void wypiszLisNast();
+    extern tproc wysw[];
+
+    //funkcje operacje na grafach
+    extern tproc1arg utworz[];
+    extern tbool znajdz[];
+    extern tproc2arg dodaj[];
+    extern tproc usun[];
 
     //funckcje tworzenia grafow
-    short ** kopiujMacSas();
-    listaElem ** kopiujLisNast();
     void utworzLosowo();
-    void utworzLosowoTest(int wierzcholki, int procenty);
     void utworzZKonsoli();
     void utworzZPliku();
 
-    //funkcje wyszukiwania Hamilton
-    void szukajHamiltonMacSas();
-    void szukajHamiltonListNast();
-
-    //funkcje wyszukiwania Euler
-    void szukajEulerMacSas(short ** macSas, int v, int e);
-    void szukajEulerListNast(listaElem ** lisNast, int v, int e);
-
-
+    //funkcje wyszukiwania cykli
+    extern tproc hamilton[];
+    extern tproc euler[];
 
 
 #endif
