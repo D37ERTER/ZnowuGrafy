@@ -7,9 +7,15 @@
     #include <time.h>   //random
     #include <queue> //kolejka
     #include <chrono> //czas
-
+	#include <vector>
+	
     using namespace std;
-
+	
+	typedef void (*tproc)();
+	typedef void (*tproc1arg)(int v);
+	typedef void (*tproc2arg)(int x, int y);
+	typedef bool (*tbool)(int x, int y);
+	
     //struktury
     struct listaElem
     {
@@ -18,8 +24,10 @@
     };
     //zmienne globalne (main) - grafy
     extern int v, e;
-    extern short ** macSas;
+    //extern short ** macSas;
+    extern vector<vector<short>> macSas;
     extern listaElem ** lisNast;
+    extern bool czySkierowany;
 
     //funkcje konsola
     int toInt(string s);
@@ -33,8 +41,6 @@
     void wypiszLisNast();
 
     //funckcje tworzenia grafow
-    short ** kopiujMacSas();
-    listaElem ** kopiujLisNast();
     void utworzLosowo();
     void utworzLosowoTest(int wierzcholki, int procenty);
     void utworzZKonsoli();
@@ -45,10 +51,14 @@
     void szukajHamiltonListNast();
 
     //funkcje wyszukiwania Euler
-    void szukajEulerMacSas(short ** macSas, int v, int e);
-    void szukajEulerListNast(listaElem ** lisNast, int v, int e);
-
-
-
+    void szukajEulerMacSas();
+    void szukajEulerListNast();
+	
+	
+	bool znajdzMacSas(int x, int y);
+	bool znajdzLisNast(int x, int y);
+	void usunMacSas();
+	void usunLisNast();
+	
 
 #endif

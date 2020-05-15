@@ -1,17 +1,49 @@
 #include "grafyLepsze.h"
 
+tbool znajdz[]=  //mo¿liwe ¿e nie dzi³a bo trzeba przenieœæ pod deklaracjê(nwm czy w "grafyLepsze.h" nie wystarczy, tyczy siê ka¿dej, dla ró¿nej liczby argumentów trzeba nowej deklaracji
+{
+	znajdzMacSas,
+    znajdzLisNast
+};
 
-//Macierz Sasiedztwa
+bool znajdzMacSas(int x, int y)
+{
+	if (macSas[x][y]==1||macSas[y][x]==1)
+		return true;
+	else return false;
+}
+
+bool znajdzLisNast(int x, int y)
+{
+	if (lisNast[x]==NULL)
+		return true;
+	listaElem* teraz=lisNast[x];
+	do
+	{
+		if (teraz->dane==y)
+			return true;
+		teraz=teraz->next;
+	} while (teraz!=lisNast[x]);
+	return false;
+}
+
 void utworzMacSas(int v)
 {
-    macSas = new short * [v];
+    /*macSas = new short * [v];
     for(int i=0; i<v; i++)
         macSas[i] = new short[v];
     for(int i=0; i<v; i++)
     {
         for(int j=0; j<v; j++)
             macSas[i][j] = 0;
-    }
+    }*/
+    macSas.resize(v+1);
+    for (int i=0;i<macSas.size();i++)
+    {
+    	macSas[i].resize(v+1,0);
+    	macSas[i][0]=i;
+    	macSas[0][i]=i;
+	}
 }
 
 void dodajDoMacSas(int x, int y)
@@ -20,25 +52,10 @@ void dodajDoMacSas(int x, int y)
     macSas[y][x] = 1;
 }
 
-short ** kopiujMacSas()
-{
-    short ** out = new short * [v];
-    for(int i=0; i<v; i++)
-        out[i] = new short[v];
-    for(int i=0; i<v; i++)
-    {
-        for(int j=0; j<v; j++)
-            out[i][j] = macSas[i][j];
-    }
-    return out;
-}
-
-
-//Lista Nastepnikow
 void utworzLisNast(int v)
 {
-    lisNast = new listaElem * [v];
-    for(int i=0; i<v; i++)
+    lisNast = new listaElem * [v+1];
+    for(int i=0; i<v+1; i++)
         lisNast[i] = NULL;
 }
 
@@ -63,128 +80,86 @@ void dodajDoLisNast(int x, int y)
     }
 }
 
-listaElem ** kopiujLisNast()
+tproc1arg utworz[]=	//mo¿liwe ¿e nie dzi³a bo trzeba przenieœæ pod deklaracjê(nwm czy w "grafyLepsze.h" nie wystarczy
 {
-    listaElem ** out = new listaElem * [v];
-    for(int i=0; i<v; i++)
-    {
-        if(lisNast[i])
-        {
-            listaElem * stary = lisNast[i];
-            listaElem * nowy = new listaElem;
-            out[i] = nowy;
-            nowy->dane = stary->dane;
-            while(stary->next)
-            {
-                nowy->next = new listaElem;
-                nowy->next->dane = stary->next->dane;
-                nowy = nowy->next;
-                stary = stary->next;
-            }
-            nowy->next = NULL;
-        }
-        else
-            out[i] = NULL;
+	utworzMacSas,
+    utworzLisNast
+};
 
-    }
-    return out;
-}
+tproc2arg dodaj[]=
+{
+	dodajDoMacSas,
+    dodajDoLisNast
+};
 
-
-//opcje tworzenia konsola
-void utworzLosowo() //nowe dostosowane do cykli
+void utworzLosowo() 
 {
     cout << "Tworzenie grafu losowo." << endl;
-    v = zKonsoli(0, 2000, "podaj ilosc wierzcholkow: ", "Niepoprawna ilosc. (musi byc od 0 do 2000)");
-    int p = zKonsoli(0, 2000, "podaj procent nasycenia krawedziami [%]: ", "Niepoprawna ilosc procent.");
-    e = v*(v-1)*p/200;
-    utworzMacSas(v);
-    utworzLisNast(v);
+    v = zKonsoli(0, 1000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 2000)");
+    int p = zKonsoli(0, 100, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
+    e = v*(v-1)*p*(1+czySkierowany)/200;
+    utworz[czySkierowany](v);
+    cout << "Tworzenie losowej tablicy." << endl;
     cout << "Losowanie lukow." << endl;
-    int maxE = v*(v-1); // max numer luku
-    bool wylosowaneLuki[maxE]; //true jeÅ¼eli luk juÅ¼ istnieje
-    for(int i=0; i<maxE ;i++)
-        wylosowaneLuki[i] = false;
-    int wylos; // wylosowany numer luku
-    int wylosOdrot; //numer luku w druga strone (trzeba go teÅ¼ zablokowac)
-    int x; //poczatek luku
-    int y; //koniec luku
+    int x; //poczatek luku w "poprawnej" numeracji
+    int y; //koniec luku w "poprawnej" numeracji
 
     cout <<"ilosc: " << e << endl;
-    for(int i=0; i<e; i++) // i - index luku
+    for(int i=0; i<e; i++) 
     {
-        if(e>10 &&!(i%(e/10)))
-            cout << (i*100)/e << "%  " << endl;
+        cout << (i*100)/e << "%  " << endl;
+        
         do
-            wylos = (rand()*rand()) % maxE;
-        while(wylosowaneLuki[wylos]);
-
-        x = wylos/(v-1);
-        y = wylos%(v-1);
-        y += (x <= y);
-        wylosOdrot = y*(v-1) + x - (y<x);
-        wylosowaneLuki[wylos] = true;
-        wylosowaneLuki[wylosOdrot] = true;
-
-        dodajDoMacSas(x, y);
-        dodajDoLisNast(x, y);
+        {
+            x = 1 + rand() % v;
+            y = 1 + rand() % v;
+            
+            if(x == y || znajdz[czySkierowany](x,y))
+            {
+                continue;
+        	}
+            else
+            {
+               dodaj[czySkierowany] (x,y);
+               break;
+            }
+        }
+        while(true);
     }
     cout << "100%" << endl;
-}
-
-void utworzLosowoTest(int wierzcholki, int procenty) //nowe dostosowane do cykli (wersja do testÃ³w na sprawozdanie)
-{
-    v = wierzcholki;
-    e = v*(v-1)*procenty/200;
-    utworzMacSas(v);
-    utworzLisNast(v);
-    int maxE = v*(v-1); // max numer luku
-    bool wylosowaneLuki[maxE]; //true jeÅ¼eli luk juÅ¼ istnieje
-    for(int i=0; i<maxE ;i++)
-        wylosowaneLuki[i] = false;
-    int wylos; // wylosowany numer luku
-    int wylosOdrot; //numer luku w druga strone (trzeba go teÅ¼ zablokowac)
-    int x, y; //poczatek i koniec lukow
-
-    for(int i=0; i<e; i++) // i - index luku
-    {
-        do
-            wylos = (rand()*rand()) % maxE;
-        while(wylosowaneLuki[wylos]);
-
-        x = wylos/(v-1);
-        y = wylos%(v-1);
-        y += (x <= y);
-        wylosOdrot = y*(v-1) + x - (y<x);
-        wylosowaneLuki[wylos] = true;
-        wylosowaneLuki[wylosOdrot] = true;
-
-        dodajDoMacSas(x, y);
-        dodajDoLisNast(x, y);
-    }
 }
 
 void utworzZKonsoli()
 {
     cout << "Tworzenie grafu z konsoli." << endl;
-    v = zKonsoli(0,1000,"podaj ilosc wierzcholkow: ", "Niepoprawna ilosc.");
-    e = zKonsoli(0,v*(v-1)*0.5,"podaj ilosc lukow: ", "Niepoprawna ilosc.");
-    utworzMacSas(v);
-    utworzLisNast(v);
+    v = zKonsoli(0,1000,"podaj ilosc wierzcholkow: ", "Nie poprawna ilosc.");
+    e = zKonsoli(0,v*(v-1)*0.5*(1+czySkierowany),"podaj ilosc lukow: ", "Nie poprawna ilosc.");
+    utworz[czySkierowany](v);
     cout << "Wprowadzanie lukow z konsoli." << endl;
+    //int err; //kod bledu
     int x, y; //poczatek i koniec lukow
     for(int i=0; i<e; i++)
     {
         do
         {
-            x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
-            y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.") -1;
-            if(macSas[x][y] != 0)
-                cout << "Taka krawedz juz istnieje." << endl;
+            x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
+            y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
+            
+            if(x == y)
+            {
+                cout << "Plik zawiera wierzolki z petlami wlasnymi." << endl;
+        	}
+            else if(znajdz[czySkierowany](x,y))
+            {
+                cout << "Graf zapisany w plku jest multigrafem." << endl;
+        	}
+            else
+            {
+               dodaj[czySkierowany] (x,y);
+               break;
+            }
         }
-        while(macSas[x][y] == 0);
-        dodajDoMacSas(x, y);
-        dodajDoLisNast(x, y);
+        while(true);
     }
 }
 
@@ -196,35 +171,44 @@ void utworzZPliku()
     cout << "podaj lokalizacje pliku: ";
     cin >> loc;
     plik.open(loc.c_str(), ios::in);
-    if(!plik.good())
+    if(plik.good())
     {
-        cout << "Niepoprawna lokalizacja. :C";
-        plik.close();
-        return;
-    }
-    plik >> v;
-    plik >> e;
-    if(e>v*(v-1)*0.5)
-    {
-        cout << "Zbyt duzo lukow." << endl;
-        plik.close();
-        return;
-    }
-    utworzMacSas(v);
-    utworzLisNast(v);
-    int x, y; //poczatek i koniec lukow
-    while(!plik.eof())
-    {
-        plik >> x;
-        plik >> y;
-        if(macSas[x][y] != 0)
+        plik >> v;
+        plik >> e;
+        if(e>v*(v-1)*0.5*(1+czySkierowany)) //graf pe³ny nieskierowany ma n*(n-1)/2 wiêc graf skierowany mo¿e miêc 2 razy wiêcej. Prawda?
         {
-            cout << "Graf zapisany w plku jest multigrafem." << endl;
+            cout << "Zbyt duzo lukow." << endl;
             plik.close();
             return;
         }
-        dodajDoMacSas(x-1, y-1);
-        dodajDoLisNast(x, y);
+        utworz[czySkierowany](v);
+        //int err; //kod bledu
+        int x, y; //poczatek i koniec lukow
+        while(!plik.eof())
+        {
+            plik >> x;
+            plik >> y;
+            if(x == y)
+            {
+                cout << "Plik zawiera wierzolki z petlami wlasnymi." << endl;
+                plik.close();
+                return;
+        	}
+            else if(znajdz[czySkierowany](x,y))
+            {
+                cout << "Graf zapisany w plku jest multigrafem." << endl;
+                plik.close();
+                return;
+        	}
+            else
+            {
+               dodaj[czySkierowany] (x,y);
+            }
+        }
+    }
+    else
+    {
+        cout << "Niepoprawna lokalizacja. :C";
     }
     plik.close();
 }

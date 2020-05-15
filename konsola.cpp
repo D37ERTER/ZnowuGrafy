@@ -52,11 +52,32 @@ int zKonsoli(int minv, int maxv, string komunikat, string blad)
 
 int zKonsoli(string komunikat, string blad)
 {
-    return zKonsoli(0, 32767, komunikat, blad);
+    return zKonsoli(0, 2147483647, komunikat, blad);
 }
 
 void wypEl(int element)
 {
     cout<<element;
     for (int i=0;i<to_string(v).size()+2-to_string(element).size();i++) cout<<" ";
+}
+
+void usunMacSas()
+{
+	macSas.clear();
+}
+
+void usunLisNast()
+{
+	listaElem*usun;
+	for (int i=1;i<v;i++)
+		{
+			while(lisNast[i]!=lisNast[i]->next)
+			{
+				usun=lisNast[i]->next;
+				lisNast[i]->next=lisNast[i]->next->next;
+				delete usun;
+			}
+			delete lisNast[i];
+		}
+	delete [] lisNast;
 }
