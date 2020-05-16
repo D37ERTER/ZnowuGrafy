@@ -12,3 +12,10 @@ obj/Debug/wyszukiwanieHamilton.o
 ZnowuGrafy.depend
 ZnowuGrafy.cbp
 obj/Debug/operacjeGrafy.o
+konsola.o
+main.o
+tworzenieGrafow.o
+operacjeGrafy.o
+wypisywanieGrafow.o
+wyszukiwanieEuler.o
+wyszukiwanieHamilton.o
