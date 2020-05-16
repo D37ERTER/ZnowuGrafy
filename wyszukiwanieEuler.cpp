@@ -43,6 +43,11 @@ void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
     szukajEulerMacSas1(pierwszyNieizolowany);
 }
 
+void szukajEulerListNast1()
+{
+
+}
+
 void szukajEulerListNast()
 {
 

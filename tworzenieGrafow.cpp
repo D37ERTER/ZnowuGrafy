@@ -48,11 +48,11 @@ void utworzZKonsoli()
 
             if(x == y)
             {
-                cout << "Plik zawiera wierzolki z petlami wlasnymi." << endl;
+                cout << "Nie można dodac luku bedacego petla wlasna." << endl;
         	}
             else if(znajdz[czySkierowany](x,y))
             {
-                cout << "Graf zapisany w plku jest multigrafem." << endl;
+                cout << "Taki luk juz istnieje." << endl;
         	}
             else
             {
@@ -81,6 +81,7 @@ void utworzZPliku()
         {
             cout << "Zbyt duzo lukow." << endl;
             plik.close();
+            czyPusto = true;
             return;
         }
         utworz[czySkierowany](v);
@@ -94,12 +95,14 @@ void utworzZPliku()
             {
                 cout << "Plik zawiera wierzolki z petlami wlasnymi." << endl;
                 plik.close();
+                czyPusto = true;
                 return;
         	}
             else if(znajdz[czySkierowany](x,y))
             {
                 cout << "Graf zapisany w plku jest multigrafem." << endl;
                 plik.close();
+                czyPusto = true;
                 return;
         	}
             else
@@ -111,6 +114,7 @@ void utworzZPliku()
     else
     {
         cout << "Niepoprawna lokalizacja. :C";
+        czyPusto = true;
     }
     plik.close();
     czyPusto = false;
