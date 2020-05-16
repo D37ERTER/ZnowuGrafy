@@ -60,3 +60,5 @@ void wypEl(int element)
     cout<<element;
     for (int i=0;i<to_string(v).size()+2-to_string(element).size();i++) cout<<" ";
 }
+
+//komntarz
