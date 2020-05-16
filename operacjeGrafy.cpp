@@ -116,3 +116,15 @@ tproc usun[] =
 	usunMacSas,
 	usunLisNast
 };
+
+void naprawMacSas()
+{
+    for(int i=1; i<=v; i++)
+    {
+        for(int j=1; j<=v; j++)
+        {
+            if(macSas[i][j]==-2)
+                macSas[i][j]=1;
+        }
+    }
+}

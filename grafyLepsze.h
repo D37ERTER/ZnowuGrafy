@@ -39,11 +39,12 @@
     //funkcje wypisywania grafow
     extern tproc wysw[];
 
-    //funkcje operacje na grafach
+    //operacje na grafach
     extern tproc1arg utworz[];
     extern tbool znajdz[];
     extern tproc2arg dodaj[];
     extern tproc usun[];
+    void naprawMacSas();
 
     //funckcje tworzenia grafow
     void utworzLosowo();

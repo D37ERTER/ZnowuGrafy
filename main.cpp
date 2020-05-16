@@ -25,7 +25,7 @@ void rodzajG()
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.0.6)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.1.1)" << endl;
     int opcjaI;
     bool zamykanie = false;
     v=0;
@@ -86,6 +86,8 @@ int main()
             break;
         case 6:
         	euler[czySkierowany]();
+        	if(!czySkierowany)
+                naprawMacSas();
             break;
         case 7:
             cout << "Konczenie pracy programu" << endl;
