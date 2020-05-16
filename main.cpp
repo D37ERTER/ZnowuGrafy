@@ -79,6 +79,7 @@ int main()
                 zamykanie = true;
                 break;
             }
+            else
             wysw[czySkierowany]();
             break;
         case 5:
