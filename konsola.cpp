@@ -61,4 +61,4 @@ void wypEl(int element)
     for (int i=0;i<to_string(v).size()+2-to_string(element).size();i++) cout<<" ";
 }
 
-//super komentarz Michała
+//super komentarz Michała test test :)
