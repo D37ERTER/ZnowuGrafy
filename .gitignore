@@ -19,3 +19,4 @@ operacjeGrafy.o
 wypisywanieGrafow.o
 wyszukiwanieEuler.o
 wyszukiwanieHamilton.o
+testy.o

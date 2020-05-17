@@ -7,8 +7,7 @@ vector<vector<short>> macSas;
 listaElem ** lisNast;
 bool czySkierowany;
 bool czyPusto = true;
-auto start = chrono::steady_clock::now();
-auto end = chrono::steady_clock::now();
+
 
 void rodzajG()
 {

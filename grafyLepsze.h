@@ -54,6 +54,10 @@
     //funkcje wyszukiwania cykli
     extern tproc hamilton[];
     extern tproc euler[];
-
+    void szukajHamiltonMacSas();
+    void szukajHamiltonListNast();
+    void szukajEulerMacSas();
+    void szukajEulerListNast();
+    
 
 #endif
