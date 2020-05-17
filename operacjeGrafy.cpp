@@ -182,13 +182,13 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 				{
 					macSas[i][dodawany]=0;
 					macSas[dodawany][i]=0;
-					//bilans--;
+					e--;
 				}
 				else
 				{
 					macSas[i][dodawany]=1;
 					macSas[dodawany][i]=1;
-					//bilans++;
+					e++;
 				}
 			//}
 		}
@@ -235,10 +235,12 @@ void eulerujLisNast()
 			if(znajdzLisNast(i,losowy))
 			{
 				usunElLisNast(i,losowy);
+				e--;
 			}
 			else
 			{
 				dodajDoLisNast(i, losowy);
+				e++;
 			}
 		}
 	}	
