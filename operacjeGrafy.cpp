@@ -243,7 +243,13 @@ void eulerujLisNast()
 		}
 	}	
 }
-  
+
+tproc euleruj[]=
+{
+	eulerujMacSas,
+	eulerujLisNast
+};
+
 listaElem ** kopiaLisNast()
 {
     listaElem ** T = new listaElem * [v];
