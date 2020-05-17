@@ -132,6 +132,34 @@ void naprawMacSas()
     }
 }
 
+
+void eulerujMacSas() //dzia�a ale mo�e zmieni� ilo�� kraw�dzi
+{
+	int stopien;
+	int dodawany;
+	for(int i=1;i<=v;i++)
+	{
+		stopien = 0;
+		for(int j=1;j<=v;j++)
+		{
+			if (macSas[i][j]==1) stopien++;
+		}
+		if (stopien%2==1)
+		{
+			dodawany = i + 1 + rand() % (v-i-1);
+			if (macSas[i][dodawany]==1)
+			{
+				macSas[i][dodawany]=0;
+				macSas[dodawany][i]=0;
+			}
+			else
+			{
+				macSas[i][dodawany]=1;
+				macSas[dodawany][i]=1;
+			}
+		}
+	}
+
 listaElem ** kopiaLisNast()
 {
     listaElem ** T = new listaElem * [v];
