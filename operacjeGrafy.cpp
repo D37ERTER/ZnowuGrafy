@@ -202,7 +202,7 @@ void usunElLisNast(int x, int y)
     if(lisNast[x] && lisNast[x]->dane == y)
     {
         usun = lisNast[x];
-        lisNast[x] = lisNast[X]->next;
+        lisNast[x] = lisNast[x]->next;
         delete usun;
     }
     else
@@ -225,15 +225,16 @@ void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
 	int losowy;
-	
+	listaElem * temp = new listaElem;
 	for (int i=1;i<=v;i++)
 	{
+		temp=lisNast[i];
 		stopienIn = 0;
 		stopienOut = 0;
-		while(lisNast[i])
+		while(temp)
 		{
 			stopienOut++;
-			lisNast[i]=lisNast[i]->next;
+			temp=temp->next;
 		}
 		for (int j=1;j<=v;j++)
 		{
@@ -245,12 +246,12 @@ void eulerujLisNast()
 			losowy = i + 1 + rand() % (v-i-1);
 			if(znajdzLisNast(i,losowy))
 			{
-				usunElLisNast(i,losowy);
+				//usunElLisNast(i,losowy);
 				e--;
 			}
 			else
 			{
-				dodajDoLisNast(i, losowy);
+				//dodajDoLisNast(i, losowy);
 				e++;
 			}
 		}

@@ -40,7 +40,7 @@ int main()
         else
             cout << "Pamiec : graf nieskierowany" << endl;
         cout << "Co chcesz zrobic?" << endl;
-        cout << "0 - Przekszta³æ na graf eulera" << endl;
+        //cout << "0 - Przekszta³æ na graf eulera" << endl;
         cout << "1 - Utworz graf z liczb losowych" << endl;
         cout << "2 - Utworz graf z danych wpisanych w konsoli" << endl;
         cout << "3 - Utworz graf z pliku" << endl;
@@ -87,12 +87,12 @@ int main()
         	hamilton[czySkierowany]();
             break;
         case 6:
-            listaElem ** kopia;
+            /*listaElem ** kopia;
             if(czySkierowany)
-                kopia = kopiaLisNast();
+                kopia = kopiaLisNast();*/
         	euler[czySkierowany]();
-        	if(czySkierowany)
-                lisNast = kopia;
+        	/*if(czySkierowany)
+                lisNast = kopia;*/
         	if(!czySkierowany)
                 naprawMacSas();
             break;
