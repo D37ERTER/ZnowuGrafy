@@ -196,25 +196,25 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 }
 
 
-/*void usunElLisNast(int wierzcholek, int usuwany)
+void usunElLisNast(int x, int y)
 {
-	listaElem * teraz = lisNast[wierzcholek];
-	listaElem * temp;
-	while(teraz && teraz->dane <=usuwany)
-	{
-		if(teraz->dane==usuwany)
-			{
-				
-			}
-		teraz=teraz->next;
-	}
+    listaElem * e = lisNast[x];
+    while(e)
+    {
+        if(e->dane == y)
+        {
+            listaElem * usun = e;
+
+        }
+        e = e->next;
+    }
 }
 
 void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
 	int dodawany;
-	
+
 	for (int i=1;i<=v;i++)
 	{
 		stopienIn = 0;
@@ -234,12 +234,12 @@ void eulerujLisNast()
 			dodawany = i + 1 + rand() % (v-i-1);
 			if(znajdzLisNast(i,j))
 			{
-				
+
 			}
 		}
-	}	
+	}
 }*/
-  
+
 listaElem ** kopiaLisNast()
 {
     listaElem ** T = new listaElem * [v];

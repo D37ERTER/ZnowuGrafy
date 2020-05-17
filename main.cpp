@@ -87,12 +87,12 @@ int main()
         	hamilton[czySkierowany]();
             break;
         case 6:
-            listaElem ** e;
+            listaElem ** kopia;
             if(czySkierowany)
-                e = kopiaLisNast();
+                kopia = kopiaLisNast();
         	euler[czySkierowany]();
         	if(czySkierowany)
-                lisNast = e;
+                lisNast = kopia;
         	if(!czySkierowany)
                 naprawMacSas();
             break;
