@@ -132,7 +132,7 @@ void naprawMacSas()
     }
 }
 
-int ** kopiaLisNast()
+listaElem ** kopiaLisNast()
 {
     listaElem ** T = new listaElem * [v];
     for(int i=0; i<v; i++)
@@ -154,6 +154,6 @@ int ** kopiaLisNast()
         }
         else
             T[i] = NULL;
-
     }
+    return T;
 }
