@@ -7,8 +7,7 @@ vector<vector<short>> macSas;
 listaElem ** lisNast;
 bool czySkierowany;
 bool czyPusto = true;
-auto start = chrono::steady_clock::now();
-auto end = chrono::steady_clock::now();
+
 
 void rodzajG()
 {
@@ -79,6 +78,7 @@ int main()
                 zamykanie = true;
                 break;
             }
+            else
             wysw[czySkierowany]();
             break;
         case 5:
@@ -90,6 +90,7 @@ int main()
                 naprawMacSas();
             break;
         case 7:
+        	usun[czySkierowany]();
             cout << "Konczenie pracy programu" << endl;
             zamykanie = true;
             break;
