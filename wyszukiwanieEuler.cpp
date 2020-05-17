@@ -8,7 +8,7 @@ void szukajEulerMacSas1(int i, int * out, int * oi)
         {
             macSas[i][j] = -2; // usuwanie krawedzi; wartosc -2 to usunieta krawedz
             macSas[j][i] = -2;
-            szukajEulerMacSas1(j,out,oi);
+            szukajEulerMacSas1(j, out, oi);
         }
     }
     out[(*oi)++] = i; //dodawanie wierzcholka do sciezki
