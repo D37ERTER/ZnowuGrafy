@@ -59,7 +59,7 @@
     void szukajEulerMacSas();
     void szukajEulerListNast();
 
-    void eulerujMacSas();
+    extern tproc euleruj[];
     listaElem ** kopiaLisNast();
 
 #endif
