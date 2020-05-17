@@ -90,6 +90,7 @@ int main()
                 naprawMacSas();
             break;
         case 7:
+        	usun[czySkierowany]();
             cout << "Konczenie pracy programu" << endl;
             zamykanie = true;
             break;

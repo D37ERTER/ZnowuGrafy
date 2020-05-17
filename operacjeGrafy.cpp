@@ -3,7 +3,7 @@
 //tworzenie grafu
 void utworzMacSas(int v)
 {
-	usunMacSas();
+	usun[czySkierowany]();
     macSas.resize(v+1);
     for (int i=0;i<macSas.size();i++)
     {
@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 
 void utworzLisNast(int v)
 {
-	usunLisNast();
+	usun[czySkierowany]();
     lisNast = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
         lisNast[i] = NULL;
