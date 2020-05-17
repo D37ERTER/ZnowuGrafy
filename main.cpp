@@ -14,6 +14,7 @@ void rodzajG()
 	cout<<"Podaj jaki rodzaj grafu chcesz wygenerowac: "<<endl;
 	cout<<"1 - Graf skierowany"<<endl;
 	cout<<"2 - Graf nieskierowany"<<endl;
+	cout<<endl;
 	int jaki = zKonsoli(1, 2, "","Bledne polecenie.");
 	if (jaki == 1)
         czySkierowany=true;
@@ -86,7 +87,12 @@ int main()
         	hamilton[czySkierowany]();
             break;
         case 6:
+            listaElem ** e;
+            if(czySkierowany)
+                e = kopiaLisNast();
         	euler[czySkierowany]();
+        	if(czySkierowany)
+                lisNast = e;
         	if(!czySkierowany)
                 naprawMacSas();
             break;

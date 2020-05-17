@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 
 void utworzLisNast(int v)
 {
-	//usun[czySkierowany]();
+	usun[czySkierowany]();
     lisNast = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
         lisNast[i] = NULL;
@@ -99,18 +99,19 @@ void usunMacSas()
 
 void usunLisNast()
 {
-	listaElem * usun;
-	for (int i=1;i<=v;i++)
+    if(lisNast)
     {
-        while(lisNast[i] && lisNast[i]->next)
+        for(int i=1; i<=v; i++)
         {
-            usun=lisNast[i]->next;
-            lisNast[i]->next=lisNast[i]->next->next;
-            delete usun;
+            while(lisNast[i])
+            {
+                listaElem * e = lisNast[i];
+                lisNast[i]=lisNast[i]->next;
+                delete e;
+            }
         }
-        if(lisNast[i]) delete lisNast[i];
+        delete lisNast;
     }
-	if(lisNast) delete lisNast;
 }
 
 tproc usun[] =
@@ -119,6 +120,7 @@ tproc usun[] =
 	usunLisNast
 };
 
+//kopie i naprawianie
 void naprawMacSas()
 {
     for(int i=1; i<=v; i++)
@@ -131,7 +133,8 @@ void naprawMacSas()
     }
 }
 
-void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
+
+void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 {
 	int stopien;
 	int dodawany;
@@ -192,6 +195,7 @@ void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
 	}
 }
 
+
 /*void usunElLisNast(int wierzcholek, int usuwany)
 {
 	listaElem * teraz = lisNast[wierzcholek];
@@ -235,3 +239,29 @@ void eulerujLisNast()
 		}
 	}	
 }*/
+  
+listaElem ** kopiaLisNast()
+{
+    listaElem ** T = new listaElem * [v];
+    for(int i=1; i<=v; i++)
+    {
+        if(lisNast[i])
+        {
+            listaElem * stary = lisNast[i];
+            listaElem * nowy = new listaElem;
+            T[i] = nowy;
+            nowy->dane = stary->dane;
+            while(stary->next)
+            {
+                nowy->next = new listaElem;
+                nowy->next->dane = stary->next->dane;
+                nowy = nowy->next;
+                stary = stary->next;
+            }
+            nowy->next = NULL;
+        }
+        else
+            T[i] = NULL;
+    }
+    return T;
+}

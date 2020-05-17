@@ -37,7 +37,7 @@ void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
     }
     if(pierwszyNieizolowany == 0)
     {
-        cout << "Nie ma ¿adnych krawêdzi, czyli w sumie jest to cykl eulera." << endl;
+        cout << "Nie ma ï¿½adnych krawï¿½dzi, czyli w sumie jest to cykl eulera." << endl;
         return;
     }
     cout << endl;
@@ -46,7 +46,7 @@ void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
 
 void szukajEulerListNast1(int i, int * out, int * oi)
 {
-    while(lisNast[i]) //dla ka¿dej wychodzacej krawedzi
+    while(lisNast[i]) //dla kaï¿½dej wychodzacej krawedzi
     {
         listaElem * e = lisNast[i]; //zapamietywanie pierwszej krawedzi
         lisNast[i] = lisNast[i]->next; //usuwanie pierwszej krawedzi
@@ -56,7 +56,7 @@ void szukajEulerListNast1(int i, int * out, int * oi)
     }
 }
 
-void szukajEulerListNast()
+void szukajEulerListNast() //zmienia zawartosc listy
 {
     int pierwszyNieizolowany = 0; //w grafie z cyklem moga byc izolowane wierzcholki i nie mozna od nich zaczac :P
     int sumaIn[v+1] = {0}, sumaOut[v+1] = {0}; //stopnie in i out wierzcholkow
@@ -88,7 +88,7 @@ void szukajEulerListNast()
     }
     if(pierwszyNieizolowany == 0)
     {
-        cout << "Nie ma ¿adnych krawêdzi, czyli w sumie jest to cykl eulera." << endl;
+        cout << "Nie ma ï¿½adnych krawï¿½dzi, czyli w sumie jest to cykl eulera." << endl;
         return;
     }
     int out[e+1] = {0}; //tablica wynikowa jest potrzebna bo luki nie dzialaja w 2 strony
