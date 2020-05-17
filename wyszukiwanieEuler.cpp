@@ -1,6 +1,6 @@
 #include "grafyLepsze.h"
 
-void szukajEulerMacSas1(int i)
+void szukajEulerMacSas1(int i, int * out, int * oi)
 {
     for(int j=1; j<=v; j++)
     {
@@ -11,7 +11,7 @@ void szukajEulerMacSas1(int i)
             szukajEulerMacSas1(j);
         }
     }
-    cout << i << endl; //dodawanie wierzcholka do sciezki nie trzeba tablicy wynikowej bo krawedzie moga byc na odwrot
+    out[(*oi)++] = i; //dodawanie wierzcholka do sciezki
 }
 
 void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
@@ -41,7 +41,17 @@ void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
         return;
     }
     cout << endl;
-    szukajEulerMacSas1(pierwszyNieizolowany);
+    int out[e+1] = {0}; //tablica wynikowa
+    int oi = 0; //out index
+    szukajEulerMacSas1(pierwszyNieizolowany, out, &oi);
+    if(oi < e+1)
+    {
+        cout << "Graf wejsciowy jest niespojny, wiec graf wejsciowy nie zawiera cyklu." << endl;
+        return;
+    }
+    cout << endl;
+    for(int i=e;i>=0;i--) //wypisywanie wyniku
+        cout << out[i] << endl;
 }
 
 void szukajEulerListNast1(int i, int * out, int * oi)

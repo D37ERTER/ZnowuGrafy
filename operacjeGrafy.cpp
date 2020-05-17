@@ -198,15 +198,26 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 
 void usunElLisNast(int x, int y)
 {
-    listaElem * e = lisNast[x];
-    while(e)
+    listaElem * usun;
+    if(lisNast[x] && lisNast[x]->dane == y)
     {
-        if(e->dane == y)
+        usun = lisNast[x];
+        lisNast[x] = lisNast[X]->next;
+        delete usun;
+    }
+    else
+    {
+        listaElem * e = lisNast[x];
+        while(e->next)
         {
-            listaElem * usun = e;
-
+            if(e->next->dane == y)
+            {
+                usun = e->next;
+                e->next = e->next->next;
+                delete usun;
+            }
+            e = e->next;
         }
-        e = e->next;
     }
 }
 
