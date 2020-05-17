@@ -25,7 +25,7 @@ void rodzajG()
 int main()
 {
     srand(time(NULL));
-    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.1.1)" << endl;
+    cout << "Witaj w PRAWIE najlepszym programie do szukania cykli w grafach. (v 0.1.4)" z<< endl;
     int opcjaI;
     bool zamykanie = false;
     v=0;
