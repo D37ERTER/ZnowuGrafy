@@ -131,7 +131,7 @@ void naprawMacSas()
     }
 }
 
-void eulerujMacSas() // nie dzia³a
+void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
 {
 	int stopien;
 	int dodawany;
