@@ -37,7 +37,7 @@ void szukajEulerMacSas() //po wykonaniu potrzeba "naprawy" macierzy
     }
     if(pierwszyNieizolowany == 0)
     {
-        cout << "Nie ma Å¼adnych krawÄ™dzi, czyli w sumie jest to cykl eulera." << endl;
+        cout << "Nie ma ¿adnych krawêdzi, czyli w sumie jest to cykl eulera." << endl;
         return;
     }
     szukajEulerMacSas1(pierwszyNieizolowany);
