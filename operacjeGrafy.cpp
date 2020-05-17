@@ -149,7 +149,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 		}
 		if (stopien%2==1)
 		{
-			if (bilans > 1)
+			/*if (bilans > 1)
 			{
 				for (int j=1;j<=v;j++)
 				{
@@ -175,8 +175,8 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 					}
 				}
 			}
-			else
-			{
+			else*/
+			//{
 				dodawany = i + 1 + rand() % (v-i-1);
 				if (macSas[i][dodawany]==1)
 				{
@@ -190,7 +190,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 					macSas[dodawany][i]=1;
 					bilans++;
 				}
-			}
+			//}
 		}
 	}
 }
