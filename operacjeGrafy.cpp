@@ -102,7 +102,7 @@ void usunLisNast()
 	listaElem * usun;
 	for (int i=1;i<=v;i++)
     {
-        while(lisNast[i]->next)
+        while(lisNast[i] && lisNast[i]->next)
         {
             usun=lisNast[i]->next;
             lisNast[i]->next=lisNast[i]->next->next;
