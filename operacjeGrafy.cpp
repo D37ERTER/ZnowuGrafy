@@ -202,7 +202,7 @@ void usunElLisNast(int x, int y)
     if(lisNast[x] && lisNast[x]->dane == y)
     {
         usun = lisNast[x];
-        lisNast[x] = lisNast[X]->next;
+        lisNast[x] = lisNast[x]->next;
         delete usun;
     }
     else
@@ -221,6 +221,7 @@ void usunElLisNast(int x, int y)
     }
 }
 
+/*
 void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
