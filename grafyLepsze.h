@@ -59,5 +59,6 @@
     void szukajEulerMacSas();
     void szukajEulerListNast();
     
+    void eulerujMacSas();
 
 #endif
