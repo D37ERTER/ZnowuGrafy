@@ -3,9 +3,9 @@
 void wypiszMacSas()
 {
     cout << "Wypisywanie macierzy sasiectwa: " << endl;
-    for(int i=1; i<macSas.size(); i++)
+    for(int i=0; i<macSas.size(); i++)
     {
-        for(int j=1; j<macSas[i].size(); j++)
+        for(int j=0; j<macSas[i].size(); j++)
         	wypEl(macSas[i][j]);
         cout << endl;
     }

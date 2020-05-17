@@ -39,6 +39,7 @@ int main()
         else
             cout << "Pamiec : graf nieskierowany" << endl;
         cout << "Co chcesz zrobic?" << endl;
+        cout << "0 - Euleruj" << endl;
         cout << "1 - Utworz graf z liczb losowych" << endl;
         cout << "2 - Utworz graf z danych wpisanych w konsoli" << endl;
         cout << "3 - Utworz graf z pliku" << endl;
@@ -55,7 +56,7 @@ int main()
         }
 
         cout << endl;
-        opcjaI = zKonsoli(1, czyPusto? 4 : 7, "","Bledne polecenie.");
+        opcjaI = zKonsoli(0, czyPusto? 4 : 7, "","Bledne polecenie.");
 
         switch(opcjaI)
         {
@@ -94,6 +95,9 @@ int main()
             cout << "Konczenie pracy programu" << endl;
             zamykanie = true;
             break;
+        case 0:
+        	eulerujMacSas();
+        	break;
         }
     }
     return 0;
