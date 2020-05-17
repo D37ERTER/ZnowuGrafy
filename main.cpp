@@ -40,7 +40,7 @@ int main()
         else
             cout << "Pamiec : graf nieskierowany" << endl;
         cout << "Co chcesz zrobic?" << endl;
-        cout << "0 - Przekszta³æ na graf eulera" << endl;
+        cout << "0 - PrzeksztaÅ‚Ä‡ na graf eulera" << endl;
         cout << "1 - Utworz graf z liczb losowych" << endl;
         cout << "2 - Utworz graf z danych wpisanych w konsoli" << endl;
         cout << "3 - Utworz graf z pliku" << endl;

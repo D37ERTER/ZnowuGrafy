@@ -221,12 +221,12 @@ void usunElLisNast(int x, int y)
     }
 }
 
-/*
+
 void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
 	int losowy;
-	
+
 	for (int i=1;i<=v;i++)
 	{
 		stopienIn = 0;
@@ -255,7 +255,7 @@ void eulerujLisNast()
 				e++;
 			}
 		}
-	}	
+	}
 }
 
 tproc euleruj[]=
