@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 
 void utworzLisNast(int v)
 {
-	usun[czySkierowany]();
+	//usun[czySkierowany]();
     lisNast = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
         lisNast[i] = NULL;
@@ -108,9 +108,9 @@ void usunLisNast()
             lisNast[i]->next=lisNast[i]->next->next;
             delete usun;
         }
-        delete lisNast[i];
+        if(lisNast[i]) delete lisNast[i];
     }
-	delete lisNast;
+	if(lisNast) delete lisNast;
 }
 
 tproc usun[] =
