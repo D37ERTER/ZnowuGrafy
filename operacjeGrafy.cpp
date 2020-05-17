@@ -119,6 +119,7 @@ tproc usun[] =
 	usunLisNast
 };
 
+//kopie i naprawianie
 void naprawMacSas()
 {
     for(int i=1; i<=v; i++)
@@ -131,7 +132,8 @@ void naprawMacSas()
     }
 }
 
-void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
+
+void eulerujMacSas() //dziaï¿½a ale moï¿½e zmieniï¿½ iloï¿½ï¿½ krawï¿½dzi
 {
 	int stopien;
 	int dodawany;
@@ -157,4 +159,29 @@ void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
 			}
 		}
 	}
+
+listaElem ** kopiaLisNast()
+{
+    listaElem ** T = new listaElem * [v];
+    for(int i=0; i<v; i++)
+    {
+        if(lisNast[i])
+        {
+            listaElem * stary = lisNast[i];
+            listaElem * nowy = new listaElem;
+            T[i] = nowy;
+            nowy->dane = stary->dane;
+            while(stary->next)
+            {
+                nowy->next = new listaElem;
+                nowy->next->dane = stary->next->dane;
+                nowy = nowy->next;
+                stary = stary->next;
+            }
+            nowy->next = NULL;
+        }
+        else
+            T[i] = NULL;
+    }
+    return T;
 }
