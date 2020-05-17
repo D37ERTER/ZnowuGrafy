@@ -135,6 +135,8 @@ void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
 {
 	int stopien;
 	int dodawany;
+	int bilans=0;
+	int k;
 	for(int i=1;i<=v;i++)
 	{
 		stopien = 0;
@@ -144,17 +146,92 @@ void eulerujMacSas() //dzia³a ale mo¿e zmieniæ iloœæ krawêdzi
 		}
 		if (stopien%2==1)
 		{
-			dodawany = i + 1 + rand() % (v-i-1);
-			if (macSas[i][dodawany]==1)
+			if (bilans > 1)
 			{
-				macSas[i][dodawany]=0;
-				macSas[dodawany][i]=0;
+				for (int j=1;j<=v;j++)
+				{
+					if (macSas[i][j]==1)
+					{
+						macSas[i][j]=0;
+						macSas[j][i]=0;
+						bilans--;
+						break;
+					}
+				}
+			}
+			else if (bilans < -1)
+			{
+				for (int j=1;j<=v;j++)
+				{
+					if (macSas[i][j]==0)
+					{
+						macSas[i][j]=1;
+						macSas[j][i]=1;
+						bilans++;
+						break;
+					}
+				}
 			}
 			else
 			{
-				macSas[i][dodawany]=1;
-				macSas[dodawany][i]=1;
+				dodawany = i + 1 + rand() % (v-i-1);
+				if (macSas[i][dodawany]==1)
+				{
+					macSas[i][dodawany]=0;
+					macSas[dodawany][i]=0;
+					bilans--;
+				}
+				else
+				{
+					macSas[i][dodawany]=1;
+					macSas[dodawany][i]=1;
+					bilans++;
+				}
 			}
 		}
 	}
 }
+
+/*void usunElLisNast(int wierzcholek, int usuwany)
+{
+	listaElem * teraz = lisNast[wierzcholek];
+	listaElem * temp;
+	while(teraz && teraz->dane <=usuwany)
+	{
+		if(teraz->dane==usuwany)
+			{
+				
+			}
+		teraz=teraz->next;
+	}
+}
+
+void eulerujLisNast()
+{
+	int stopienIn, stopienOut;
+	int dodawany;
+	
+	for (int i=1;i<=v;i++)
+	{
+		stopienIn = 0;
+		stopienOut = 0;
+		while(lisNast[i])
+		{
+			stopienOut++;
+			lisNast[i]=lisNast[i]->next;
+		}
+		for (int j=1;j<=v;j++)
+		{
+			if(znajdzLisNast(j,i))
+				stopienIn++;
+		}
+		if (stopienIn != stopienOut)
+		{
+			dodawany = i + 1 + rand() % (v-i-1);
+			if(znajdzLisNast(i,j))
+			{
+				
+			}
+		}
+	}	
+}*/
