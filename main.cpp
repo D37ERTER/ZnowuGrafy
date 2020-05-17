@@ -14,6 +14,7 @@ void rodzajG()
 	cout<<"Podaj jaki rodzaj grafu chcesz wygenerowac: "<<endl;
 	cout<<"1 - Graf skierowany"<<endl;
 	cout<<"2 - Graf nieskierowany"<<endl;
+	cout<<endl;
 	int jaki = zKonsoli(1, 2, "","Bledne polecenie.");
 	if (jaki == 1)
         czySkierowany=true;
