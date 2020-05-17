@@ -58,7 +58,8 @@
     void szukajHamiltonListNast();
     void szukajEulerMacSas();
     void szukajEulerListNast();
-    
+
     void eulerujMacSas();
+    listaElem ** kopiaLisNast();
 
 #endif

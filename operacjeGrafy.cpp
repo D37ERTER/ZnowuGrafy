@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 
 void utworzLisNast(int v)
 {
-	//usun[czySkierowany]();
+	usun[czySkierowany]();
     lisNast = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
         lisNast[i] = NULL;
@@ -99,18 +99,19 @@ void usunMacSas()
 
 void usunLisNast()
 {
-	listaElem * usun;
-	for (int i=1;i<=v;i++)
+    if(lisNast)
     {
-        while(lisNast[i] && lisNast[i]->next)
+        for(int i=1; i<=v; i++)
         {
-            usun=lisNast[i]->next;
-            lisNast[i]->next=lisNast[i]->next->next;
-            delete usun;
+            while(lisNast[i])
+            {
+                listaElem * e = lisNast[i];
+                lisNast[i]=lisNast[i]->next;
+                delete e;
+            }
         }
-        if(lisNast[i]) delete lisNast[i];
+        delete lisNast;
     }
-	if(lisNast) delete lisNast;
 }
 
 tproc usun[] =
@@ -133,7 +134,7 @@ void naprawMacSas()
 }
 
 
-void eulerujMacSas() //dzia�a ale mo�e zmieni� ilo�� kraw�dzi
+void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 {
 	int stopien;
 	int dodawany;
@@ -159,11 +160,12 @@ void eulerujMacSas() //dzia�a ale mo�e zmieni� ilo�� kraw�dzi
 			}
 		}
 	}
+}
 
 listaElem ** kopiaLisNast()
 {
     listaElem ** T = new listaElem * [v];
-    for(int i=0; i<v; i++)
+    for(int i=1; i<=v; i++)
     {
         if(lisNast[i])
         {
