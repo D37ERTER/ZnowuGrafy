@@ -40,14 +40,14 @@ void test()
 	long long int pomiary[5];
 	for (int g=0;g<2;g++)	//nieskierowany lub skierowany
 	{
-		for (int i=100;i<=2000;i+=100)	//ka¿de n
+		for (int i=100;i<=2000;i+=100)	//kaï¿½de n
 		{
 			for (int s=0;s<9;s++) // nasycenie (w %) - (s+1)*10
 			{
-				//utworzLosowo(i,(s+1)*10); //stworzyæ procedurê
+				//utworzLosowo(i,(s+1)*10); //stworzyï¿½ procedurï¿½
 				for (int j=0;j<2;j++) //euler lub hamilton
 				{
-					for (int k=0;k<5;k++)  // 5 pomiarów
+					for (int k=0;k<5;k++)  // 5 pomiarï¿½w
 					{
 						start = chrono::steady_clock::now();
 						cykle[j][g]();
