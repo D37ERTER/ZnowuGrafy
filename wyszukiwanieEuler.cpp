@@ -91,11 +91,11 @@ void szukajEulerListNast()
         cout << "Nie ma żadnych krawędzi, czyli w sumie jest to cykl eulera." << endl;
         return;
     }
-    cout << endl;
     int out[e+1] = {0}; //tablica wynikowa jest potrzebna bo luki nie dzialaja w 2 strony
     int oi = 0; //out index
     out[oi++] = pierwszyNieizolowany;
     szukajEulerListNast1(pierwszyNieizolowany, out, &oi);
+    cout << endl;
     for(int i=e;i>=0;i--) //wypisywanie wyniku
         cout << out[i] << endl;
 }
