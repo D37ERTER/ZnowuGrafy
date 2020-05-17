@@ -221,6 +221,7 @@ void usunElLisNast(int x, int y)
     }
 }
 
+
 void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
@@ -255,7 +256,7 @@ void eulerujLisNast()
 				e++;
 			}
 		}
-	}	
+	}
 }
 
 tproc euleruj[]=
