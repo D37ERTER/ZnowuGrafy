@@ -182,13 +182,13 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 				{
 					macSas[i][dodawany]=0;
 					macSas[dodawany][i]=0;
-					bilans--;
+					//bilans--;
 				}
 				else
 				{
 					macSas[i][dodawany]=1;
 					macSas[dodawany][i]=1;
-					bilans++;
+					//bilans++;
 				}
 			//}
 		}
@@ -196,7 +196,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 }
 
 
-/*void usunElLisNast(int wierzcholek, int usuwany)
+void usunElLisNast(int wierzcholek, int usuwany)
 {
 	listaElem * teraz = lisNast[wierzcholek];
 	listaElem * temp;
@@ -213,7 +213,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 void eulerujLisNast()
 {
 	int stopienIn, stopienOut;
-	int dodawany;
+	int losowy;
 	
 	for (int i=1;i<=v;i++)
 	{
@@ -231,14 +231,18 @@ void eulerujLisNast()
 		}
 		if (stopienIn != stopienOut)
 		{
-			dodawany = i + 1 + rand() % (v-i-1);
-			if(znajdzLisNast(i,j))
+			losowy = i + 1 + rand() % (v-i-1);
+			if(znajdzLisNast(i,losowy))
 			{
-				
+				usunElLisNast(i,losowy);
+			}
+			else
+			{
+				dodajDoLisNast(i, losowy);
 			}
 		}
 	}	
-}*/
+}
   
 listaElem ** kopiaLisNast()
 {
