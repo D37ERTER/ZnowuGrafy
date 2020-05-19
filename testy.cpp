@@ -11,15 +11,15 @@ tproc cykle[2][2]=
 
 string pliki[9][2][2]=
 {
-	{{"hamilton10ns.txt","euler10ns.txt"},{"hamilton10s.txt","euler10s.txt"}},
-	{{"hamilton20ns.txt","euler20ns.txt"},{"hamilton20s.txt","euler20s.txt"}},
-	{{"hamilton30ns.txt","euler30ns.txt"},{"hamilton30s.txt","euler30s.txt"}},
-	{{"hamilton40ns.txt","euler40ns.txt"},{"hamilton40s.txt","euler40s.txt"}},
-	{{"hamilton50ns.txt","euler50ns.txt"},{"hamilton50s.txt","euler50s.txt"}},
-	{{"hamilton60ns.txt","euler60ns.txt"},{"hamilton60s.txt","euler60s.txt"}},
-	{{"hamilton70ns.txt","euler70ns.txt"},{"hamilton70s.txt","euler70s.txt"}},
-	{{"hamilton80ns.txt","euler80ns.txt"},{"hamilton80s.txt","euler80s.txt"}},
-	{{"hamilton90ns.txt","euler90ns.txt"},{"hamilton90s.txt","euler90s.txt"}}
+	{{"wyniki/hamilton10ns.txt","wyniki/euler10ns.txt"},{"wyniki/hamilton10s.txt","wyniki/euler10s.txt"}},
+	{{"wyniki/hamilton20ns.txt","wyniki/euler20ns.txt"},{"wyniki/hamilton20s.txt","wyniki/euler20s.txt"}},
+	{{"wyniki/hamilton30ns.txt","wyniki/euler30ns.txt"},{"wyniki/hamilton30s.txt","wyniki/euler30s.txt"}},
+	{{"wyniki/hamilton40ns.txt","wyniki/euler40ns.txt"},{"wyniki/hamilton40s.txt","wyniki/euler40s.txt"}},
+	{{"wyniki/hamilton50ns.txt","wyniki/euler50ns.txt"},{"wyniki/hamilton50s.txt","wyniki/euler50s.txt"}},
+	{{"wyniki/hamilton60ns.txt","wyniki/euler60ns.txt"},{"wyniki/hamilton60s.txt","wyniki/euler60s.txt"}},
+	{{"wyniki/hamilton70ns.txt","wyniki/euler70ns.txt"},{"wyniki/hamilton70s.txt","wyniki/euler70s.txt"}},
+	{{"wyniki/hamilton80ns.txt","wyniki/euler80ns.txt"},{"wyniki/hamilton80s.txt","wyniki/euler80s.txt"}},
+	{{"wyniki/hamilton90ns.txt","wyniki/euler90ns.txt"},{"wyniki/hamilton90s.txt","wyniki/euler90s.txt"}}
 };
 
 void zapisz(long long pomiary[], int ile, string nazwa)
