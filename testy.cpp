@@ -40,23 +40,24 @@ void test()
 	long long int pomiary[5];
 	for (int g=0;g<2;g++)	//nieskierowany lub skierowany
 	{
-		for (int i=100;i<=2000;i+=100)	//ka�de n
+		czySkierowany=g;
+		for (int i=10;i<=20;i+=2)	//ka�de n
 		{
 			for (int s=0;s<9;s++) // nasycenie (w %) - (s+1)*10
 			{
-				//utworzLosowo(i,(s+1)*10); //stworzy� procedur�
+				utworzLosowoTesty(i,(s+1)*10); //stworzy� procedur�
 				for (int j=0;j<2;j++) //euler lub hamilton
 				{
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
 						start = chrono::steady_clock::now();
-						cykle[j][g]();
+						cykle[j][czySkierowany]();
 						endx = chrono::steady_clock::now();
 						pomiary[k]=chrono::duration_cast<chrono::milliseconds>(endx - start).count();
 					}
-					zapisz(pomiary, i, pliki[s][g][j]);
+					zapisz(pomiary, i, pliki[s][czySkierowany][j]);
 				}
-				usun[g]();
+				usun[czySkierowany]();
 			}
 		}
 	}

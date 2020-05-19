@@ -64,5 +64,8 @@
 	
 	//void utworzLisNast(int v);
 	//bool znajdzLisNast(int x, int y);
+	
+	void test();
+	void utworzLosowoTesty(int v, int p);
 
 #endif

@@ -84,9 +84,7 @@ void utworzZPliku()
             czyPusto = true;
             return;
         }
-        cout<<"penis1"<<endl;
         utworz[czySkierowany](v);
-        cout<<"penis2"<<endl;
         //int err; //kod bledu
         int x, y; //poczatek i koniec lukow
         while(!plik.eof())
@@ -112,7 +110,6 @@ void utworzZPliku()
                dodaj[czySkierowany] (x,y);
             }
         }
-        cout<<"penis3"<<endl;
     }
     else
     {
@@ -122,3 +119,34 @@ void utworzZPliku()
     plik.close();
     czyPusto = false;
 }
+
+void utworzLosowoTesty(int v, int p)
+{
+    cout << "Tworzenie grafu losowo." << endl;
+    //v = zKonsoli(0, 1000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 1000)");
+    //int p = zKonsoli(0, 100, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
+    e = v*(v-1)*p*(1+czySkierowany)/200;
+    utworz[czySkierowany](v);
+    cout << "Tworzenie losowej tablicy." << endl;
+    cout << "Losowanie lukow." << endl;
+    int x; //poczatek luku w "poprawnej" numeracji
+    int y; //koniec luku w "poprawnej" numeracji
+
+    cout <<"ilosc: " << e << endl;
+    for(int i=0; i<e; i++)
+    {
+        /*if(e >= 10 && i%(e/10) == 0)
+            cout << (i*100)/e << "%  " << endl;*/
+        do
+        {
+            x = 1 + rand() % v;
+            y = 1 + rand() % v;
+        }
+        while(x == y || znajdz[czySkierowany](x,y));
+        dodaj[czySkierowany] (x,y);
+
+    }
+    //cout << "100%" << endl;
+    czyPusto = false;
+}
+
