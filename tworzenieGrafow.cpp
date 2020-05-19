@@ -120,9 +120,10 @@ void utworzZPliku()
     czyPusto = false;
 }
 
-void utworzLosowoTesty(int v, int p)
+void utworzLosowoTesty(int w, int p)
 {
     cout << "Tworzenie grafu losowo." << endl;
+    v=w;
     //v = zKonsoli(0, 1000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 1000)");
     //int p = zKonsoli(0, 100, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
     e = v*(v-1)*p*(1+czySkierowany)/200;

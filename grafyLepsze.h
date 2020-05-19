@@ -62,8 +62,15 @@
     //extern tproc euleruj[];
     listaElem ** kopiaLisNast();
 	
-	//void utworzLisNast(int v);
-	//bool znajdzLisNast(int x, int y);
+	void utworzMacSas(int v);
+	void utworzLisNast(int v);
+	void utworzLisNast(int v);
+	bool znajdzMacSas(int x, int y);
+	bool znajdzLisNast(int x, int y);
+	void dodajDoMacSas(int x, int y);
+	void dodajDoLisNast(int x, int y);
+	void usunMacSas();
+	void usunLisNast();
 	
 	void test();
 	void utworzLosowoTesty(int v, int p);

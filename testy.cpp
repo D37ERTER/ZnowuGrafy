@@ -51,12 +51,28 @@ void test()
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
 						start = chrono::steady_clock::now();
-						cykle[j][czySkierowany]();
+						if (j==0){
+							hamilton[czySkierowany]();
+						} else
+						{
+							listaElem ** kopia;
+				            if(czySkierowany)
+				                kopia = kopiaLisNast();
+				            euler[czySkierowany]();
+				            delete [] lisNast;
+				            if(czySkierowany)
+				                lisNast = kopia;
+				            delete [] kopia;
+				            if(!czySkierowany)
+				                naprawMacSas();
+						}
+						//cykle[j][czySkierowany]();
 						endx = chrono::steady_clock::now();
 						pomiary[k]=chrono::duration_cast<chrono::milliseconds>(endx - start).count();
 					}
 					zapisz(pomiary, i, pliki[s][czySkierowany][j]);
 				}
+				wysw[czySkierowany]();
 				usun[czySkierowany]();
 			}
 		}

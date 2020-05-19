@@ -94,8 +94,10 @@ int main()
             if(czySkierowany)
                 kopia = kopiaLisNast();
             euler[czySkierowany]();
+            delete [] lisNast;
             if(czySkierowany)
                 lisNast = kopia;
+            delete [] kopia;
             if(!czySkierowany)
                 naprawMacSas();
             break;
