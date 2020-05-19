@@ -59,7 +59,10 @@
     void szukajEulerMacSas();
     void szukajEulerListNast();
 
-    extern tproc euleruj[];
+    //extern tproc euleruj[];
     listaElem ** kopiaLisNast();
+	
+	//void utworzLisNast(int v);
+	//bool znajdzLisNast(int x, int y);
 
 #endif

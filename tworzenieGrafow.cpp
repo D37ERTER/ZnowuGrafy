@@ -77,14 +77,16 @@ void utworzZPliku()
     {
         plik >> v;
         plik >> e;
-        if(e>v*(v-1)*(2-czySkierowany)) //graf pe�ny nieskierowany ma n*(n-1)/2 wi�c graf skierowany mo�e mi�c 2 razy wi�cej. Prawda?
+        if(e>v*(v-1)*(2-czySkierowany)*0.5) //graf pe�ny nieskierowany ma n*(n-1)/2 wi�c graf skierowany mo�e mi�c 2 razy wi�cej. Prawda?
         {
             cout << "Zbyt duzo lukow." << endl;
             plik.close();
             czyPusto = true;
             return;
         }
+        cout<<"penis1"<<endl;
         utworz[czySkierowany](v);
+        cout<<"penis2"<<endl;
         //int err; //kod bledu
         int x, y; //poczatek i koniec lukow
         while(!plik.eof())
@@ -110,6 +112,7 @@ void utworzZPliku()
                dodaj[czySkierowany] (x,y);
             }
         }
+        cout<<"penis3"<<endl;
     }
     else
     {

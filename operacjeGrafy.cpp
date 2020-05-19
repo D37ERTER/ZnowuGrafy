@@ -101,7 +101,7 @@ void usunLisNast()
 {
     if(lisNast)
     {
-        for(int i=1; i<=v; i++)
+        for(int i=0; i<=v; i++)
         {
             while(lisNast[i])
             {
@@ -133,7 +133,7 @@ void naprawMacSas()
     }
 }
 
-
+/*
 void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 {
 	int stopien;
@@ -149,7 +149,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 		}
 		if (stopien%2==1)
 		{
-			/*if (bilans > 1)
+			if (bilans > 1)
 			{
 				for (int j=1;j<=v;j++)
 				{
@@ -175,7 +175,7 @@ void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
 					}
 				}
 			}
-			else*/
+			else
 			//{
 				dodawany = i + 1 + rand() % (v-i-1);
 				if (macSas[i][dodawany]==1)
@@ -264,10 +264,10 @@ tproc euleruj[]=
 	eulerujMacSas,
 	eulerujLisNast
 };
-
+*/
 listaElem ** kopiaLisNast()
 {
-    listaElem ** T = new listaElem * [v];
+    listaElem ** T = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
     {
         if(lisNast[i])
