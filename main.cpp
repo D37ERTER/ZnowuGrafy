@@ -5,6 +5,7 @@
 int v, e;
 vector<vector<short>> macSas;
 listaElem ** lisNast;
+listaElem ** kopia;
 bool czySkierowany;
 bool czyPusto = true;
 
@@ -40,7 +41,7 @@ int main()
         else
             cout << "Pamiec : graf nieskierowany" << endl;
         cout << "Co chcesz zrobic?" << endl;
-        //cout << "0 - Przekształć na graf eulera" << endl;
+        cout << "10 - Test" << endl;
         cout << "1 - Utworz graf z liczb losowych" << endl;
         cout << "2 - Utworz graf z danych wpisanych w konsoli" << endl;
         cout << "3 - Utworz graf z pliku" << endl;
@@ -57,10 +58,13 @@ int main()
         }
 
         cout << endl;
-        opcjaI = zKonsoli(0, czyPusto? 4 : 7, "","Bledne polecenie.");
+        opcjaI = zKonsoli(1,11 /*czyPusto? 4 : 7*/, "","Bledne polecenie.");
 
         switch(opcjaI)
         {
+        case 10:
+        	test();
+        	break;
         case 1:
         	rodzajG();
             utworzLosowo();
@@ -87,13 +91,15 @@ int main()
         	hamilton[czySkierowany]();
             break;
         case 6:
-            listaElem ** kopia;
+            //listaElem ** kopia;
             if(czySkierowany)
                 kopia = kopiaLisNast();
-        	euler[czySkierowany]();
-        	if(czySkierowany)
+            euler[czySkierowany]();
+            delete [] lisNast;
+            if(czySkierowany)
                 lisNast = kopia;
-        	if(!czySkierowany)
+            delete [] kopia;
+            if(!czySkierowany)
                 naprawMacSas();
             break;
         case 7:
@@ -101,9 +107,7 @@ int main()
             cout << "Konczenie pracy programu" << endl;
             zamykanie = true;
             break;
-        case 0:
-        	euleruj[czySkierowany]();
-        	break;
+
         }
     }
     return 0;
