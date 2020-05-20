@@ -28,6 +28,7 @@
     extern listaElem ** lisNast;
     extern bool czySkierowany;
     extern bool czyPusto;
+	extern listaElem ** kopia;
 
     //funkcje konsola
     int toInt(string s);
@@ -59,7 +60,20 @@
     void szukajEulerMacSas();
     void szukajEulerListNast();
 
-    extern tproc euleruj[];
+    //extern tproc euleruj[];
     listaElem ** kopiaLisNast();
+	
+	void utworzMacSas(int v);
+	void utworzLisNast(int v);
+	void utworzLisNast(int v);
+	bool znajdzMacSas(int x, int y);
+	bool znajdzLisNast(int x, int y);
+	void dodajDoMacSas(int x, int y);
+	void dodajDoLisNast(int x, int y);
+	void usunMacSas();
+	void usunLisNast();
+	
+	void test();
+	void utworzLosowoTesty(int w, int p);
 
 #endif

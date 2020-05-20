@@ -77,7 +77,7 @@ void utworzZPliku()
     {
         plik >> v;
         plik >> e;
-        if(e>v*(v-1)*(2-czySkierowany)) //graf pe�ny nieskierowany ma n*(n-1)/2 wi�c graf skierowany mo�e mi�c 2 razy wi�cej. Prawda?
+        if(e>v*(v-1)*(2-czySkierowany)*0.5) //graf pe�ny nieskierowany ma n*(n-1)/2 wi�c graf skierowany mo�e mi�c 2 razy wi�cej. Prawda?
         {
             cout << "Zbyt duzo lukow." << endl;
             plik.close();
@@ -119,3 +119,41 @@ void utworzZPliku()
     plik.close();
     czyPusto = false;
 }
+
+void utworzLosowoTesty(int w, int p)
+{
+    cout << "Tworzenie grafu losowo." << endl;
+    v=w;
+    cout<<"1"<<endl;
+    //v = zKonsoli(0, 1000, "podaj ilosc wierzcholkow: ", "Nie poprawna ilosc. (musi byc od 0 do 1000)");
+    //int p = zKonsoli(0, 100, "podaj procent nasycenia krawedziami [%]: ", "Nie poprawna ilosc procent.");
+    e = v*(v-1)*p*(1+czySkierowany)/200;
+    cout<<"2"<<endl;
+    utworz[czySkierowany](v);
+    cout<<"3"<<endl;
+    cout << "Tworzenie losowej tablicy." << endl;
+    cout << "Losowanie lukow." << endl;
+    int x; //poczatek luku w "poprawnej" numeracji
+    int y; //koniec luku w "poprawnej" numeracji
+
+    cout <<"ilosc: " << e << endl;
+    for(int i=0; i<e; i++)
+    {
+        /*if(e >= 10 && i%(e/10) == 0)
+            cout << (i*100)/e << "%  " << endl;*/
+        do
+        {
+            x = 1 + rand() % v;
+            y = 1 + rand() % v;
+            cout<<"4"<<endl;
+        }
+        while(x == y || znajdz[czySkierowany](x,y));
+        cout<<"5"<<endl;
+        dodaj[czySkierowany] (x,y);
+        cout<<"6"<<endl;
+    }
+    //cout << "100%" << endl;
+    cout<<"7"<<endl;
+    czyPusto = false;
+}
+
