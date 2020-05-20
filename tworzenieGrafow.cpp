@@ -145,12 +145,15 @@ void utworzLosowoTesty(int w, int p)
         {
             x = 1 + rand() % v;
             y = 1 + rand() % v;
+            cout<<"4"<<endl;
         }
         while(x == y || znajdz[czySkierowany](x,y));
+        cout<<"5"<<endl;
         dodaj[czySkierowany] (x,y);
-        cout<<"4"<<endl;
+        cout<<"6"<<endl;
     }
     //cout << "100%" << endl;
+    cout<<"7"<<endl;
     czyPusto = false;
 }
 

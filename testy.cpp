@@ -64,18 +64,20 @@ tproc cykle[]=
 void test()
 {
 	long long int pomiary[5];
-	for (int g=1;g<2;g++)	//nieskierowany lub skierowany
+	for (int g=0;g<2;g++)	//nieskierowany lub skierowany
 	{
 		czySkierowany=g;
-		for (int i=10;i<=20;i+=2)	//ka�de n
+		for (int i=20;i<=200;i+=20)	//ka�de n
 		{
 			for (int s=0;s<9;s++) // nasycenie (w %) - (s+1)*10
 			{
 				utworzLosowoTesty(i,(s+1)*10); //stworzy� procedur�
-				for (int j=1;j<2;j++) //hamilton lub euler  
+				cout<<"8"<<endl;
+				for (int j=0;j<2;j++) //hamilton lub euler  
 				{
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
+						cout<<"9"<<endl;
 						start = chrono::steady_clock::now();
 						cykle[j]();
 						endx = chrono::steady_clock::now();

@@ -19,6 +19,7 @@ void szukajHamiltonMacSas1(int i, int * out, int * oi, bool * odwiedzone, bool *
     {
         if(macSas[i][j] == 1 && !odwiedzone[j])
         {
+        	cout<<"13H"<<endl;
             szukajHamiltonMacSas1(j, out, oi, odwiedzone, znaleziono); //przechodzenie do kolejnego wierzcholka
             if(*znaleziono) //jak znaleziono cykl to przestan szukac
                 return;
@@ -34,7 +35,9 @@ void szukajHamiltonMacSas()
     int oi = 0; //out index
     bool odwiedzone[v+1] = {0}; //informacja o odwiedzeniu wierzcholka
     bool znaleziono = false; //informacja o znalezieniu cyklu i konczeniu szukania
-    szukajHamiltonMacSas1(1, out, &oi, odwiedzone, &znaleziono);
+    cout<<"11H"<<endl;
+	szukajHamiltonMacSas1(1, out, &oi, odwiedzone, &znaleziono);
+	cout<<"12H"<<endl;
     if(!znaleziono) //nie udalo sie znalezc cyklu
     {
         cout << "Graf wejsciowy nie zawiera cyklu." << endl;
