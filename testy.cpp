@@ -3,11 +3,7 @@
 auto start = chrono::steady_clock::now();
 auto endx = chrono::steady_clock::now();
 
-tproc cykle[2][2]=
-{
-	{szukajHamiltonMacSas, szukajHamiltonListNast},
-	{szukajEulerMacSas, szukajEulerListNast}
-};
+
 
 string pliki[9][2][2]=
 {
@@ -35,6 +31,36 @@ void zapisz(long long pomiary[], int ile, string nazwa)
 	zapis.close();
 }
 
+void hamiltonTest()
+{
+	hamilton[czySkierowany]();
+}
+
+void eulerTest()
+{
+	//listaElem ** kopia;
+    if(czySkierowany)
+    {
+		kopia = kopiaLisNast();
+	}
+    euler[czySkierowany]();
+    if(czySkierowany)
+    {
+    	delete [] lisNast;
+    	lisNast = kopia;
+    	delete [] kopia;
+	}
+    if(!czySkierowany)
+        naprawMacSas();
+	
+}
+
+tproc cykle[]=
+{
+	hamiltonTest,
+	eulerTest
+};
+
 void test()
 {
 	long long int pomiary[5];
@@ -51,7 +77,7 @@ void test()
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
 						start = chrono::steady_clock::now();
-						if (j==0){
+						/*if (j==0){
 							hamilton[czySkierowany]();
 						} else
 						{
@@ -65,8 +91,8 @@ void test()
 				            delete [] kopia;
 				            if(!czySkierowany)
 				                naprawMacSas();
-						}
-						//cykle[j][czySkierowany]();
+						}*/
+						cykle[j]();
 						endx = chrono::steady_clock::now();
 						pomiary[k]=chrono::duration_cast<chrono::milliseconds>(endx - start).count();
 					}

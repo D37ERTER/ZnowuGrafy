@@ -5,6 +5,7 @@
 int v, e;
 vector<vector<short>> macSas;
 listaElem ** lisNast;
+listaElem ** kopia;
 bool czySkierowany;
 bool czyPusto = true;
 
@@ -90,7 +91,7 @@ int main()
         	hamilton[czySkierowany]();
             break;
         case 6:
-            listaElem ** kopia;
+            //listaElem ** kopia;
             if(czySkierowany)
                 kopia = kopiaLisNast();
             euler[czySkierowany]();

@@ -28,6 +28,7 @@
     extern listaElem ** lisNast;
     extern bool czySkierowany;
     extern bool czyPusto;
+	extern listaElem ** kopia;
 
     //funkcje konsola
     int toInt(string s);
@@ -73,6 +74,6 @@
 	void usunLisNast();
 	
 	void test();
-	void utworzLosowoTesty(int v, int p);
+	void utworzLosowoTesty(int w, int p);
 
 #endif
