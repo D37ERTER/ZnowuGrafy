@@ -267,7 +267,7 @@ tproc euleruj[]=
 
 listaElem ** kopiaLisNast()
 {
-    listaElem ** T = new listaElem * [v];
+    listaElem ** T = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
     {
         if(lisNast[i])

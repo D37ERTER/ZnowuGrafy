@@ -45,7 +45,6 @@ void utworzZKonsoli()
         {
             x = zKonsoli(1, v, "podaj poczatek luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
             y = zKonsoli(1, v, "podaj koniec luku (" + toString(i+1) + "/" + toString(e) + "): ", "Bledne id wierzcholka.");
-
             if(x == y)
             {
                 cout << "Nie można dodac luku bedacego petla wlasna." << endl;
