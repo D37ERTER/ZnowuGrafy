@@ -39,17 +39,17 @@ void hamiltonTest()
 void eulerTest()
 {
 	//listaElem ** kopia;
-    if(czySkierowany)
+    /*if(czySkierowany)
     {
 		kopia = kopiaLisNast();
-	}
+	}*/
     euler[czySkierowany]();
     if(czySkierowany)
-    {
+    /*{
     	delete [] lisNast;
     	lisNast = kopia;
     	delete [] kopia;
-	}
+	}*/
     if(!czySkierowany)
         naprawMacSas();
 	
@@ -72,7 +72,7 @@ void test()
 			for (int s=0;s<9;s++) // nasycenie (w %) - (s+1)*10
 			{
 				utworzLosowoTesty(i,(s+1)*10); //stworzy� procedur�
-				/*for (int j=0;j<2;j++) //hamilton lub euler  
+				for (int j=1;j<2;j++) //hamilton lub euler  
 				{
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
@@ -82,7 +82,7 @@ void test()
 						pomiary[k]=chrono::duration_cast<chrono::milliseconds>(endx - start).count();
 					}
 					zapisz(pomiary, i, pliki[s][czySkierowany][j]);
-				}*/
+				}
 				wysw[czySkierowany]();
 				usun[czySkierowany]();
 			}
