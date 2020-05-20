@@ -3,7 +3,7 @@
 //tworzenie grafu
 void utworzMacSas(int v)
 {
-	usun[czySkierowany]();
+	//usun[czySkierowany]();
     macSas.resize(v+1);
     for (int i=0;i<macSas.size();i++)
     {
@@ -15,7 +15,7 @@ void utworzMacSas(int v)
 
 void utworzLisNast(int v)
 {
-	usun[czySkierowany]();
+	//usun[czySkierowany]();
     lisNast = new listaElem * [v+1];
     for(int i=1; i<=v; i++)
         lisNast[i] = NULL;
@@ -101,7 +101,7 @@ void usunLisNast()
 {
     if(lisNast)
     {
-        for(int i=0; i<=v; i++)
+        for(int i=1; i<=v; i++)
         {
             while(lisNast[i])
             {
@@ -110,7 +110,7 @@ void usunLisNast()
                 delete e;
             }
         }
-        delete lisNast;
+        delete [] lisNast;
     }
 }
 
@@ -132,6 +132,37 @@ void naprawMacSas()
         }
     }
 }
+
+listaElem ** kopiaLisNast()
+{
+    listaElem ** T = new listaElem * [v+1];
+    for(int i=1; i<=v; i++)
+    {
+        if(lisNast[i])
+        {
+            listaElem * stary = lisNast[i];
+            listaElem * nowy = new listaElem;
+            T[i] = nowy;
+            nowy->dane = stary->dane;
+            while(stary->next)
+            {
+                nowy->next = new listaElem;
+                nowy->next->dane = stary->next->dane;
+                nowy = nowy->next;
+                stary = stary->next;
+            }
+            nowy->next = NULL;
+        }
+        else
+            T[i] = NULL;
+    }
+    return T;
+}
+
+
+
+
+
 
 /*
 void eulerujMacSas() //dziala ale moze zmienic ilosc krawedzi
@@ -265,28 +296,3 @@ tproc euleruj[]=
 	eulerujLisNast
 };
 */
-listaElem ** kopiaLisNast()
-{
-    listaElem ** T = new listaElem * [v+1];
-    for(int i=1; i<=v; i++)
-    {
-        if(lisNast[i])
-        {
-            listaElem * stary = lisNast[i];
-            listaElem * nowy = new listaElem;
-            T[i] = nowy;
-            nowy->dane = stary->dane;
-            while(stary->next)
-            {
-                nowy->next = new listaElem;
-                nowy->next->dane = stary->next->dane;
-                nowy = nowy->next;
-                stary = stary->next;
-            }
-            nowy->next = NULL;
-        }
-        else
-            T[i] = NULL;
-    }
-    return T;
-}

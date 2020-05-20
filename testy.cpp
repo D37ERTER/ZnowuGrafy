@@ -64,7 +64,7 @@ tproc cykle[]=
 void test()
 {
 	long long int pomiary[5];
-	for (int g=0;g<2;g++)	//nieskierowany lub skierowany
+	for (int g=1;g<2;g++)	//nieskierowany lub skierowany
 	{
 		czySkierowany=g;
 		for (int i=10;i<=20;i+=2)	//ka�de n
@@ -72,32 +72,17 @@ void test()
 			for (int s=0;s<9;s++) // nasycenie (w %) - (s+1)*10
 			{
 				utworzLosowoTesty(i,(s+1)*10); //stworzy� procedur�
-				for (int j=0;j<2;j++) //euler lub hamilton
+				/*for (int j=0;j<2;j++) //hamilton lub euler  
 				{
 					for (int k=0;k<5;k++)  // 5 pomiar�w
 					{
 						start = chrono::steady_clock::now();
-						/*if (j==0){
-							hamilton[czySkierowany]();
-						} else
-						{
-							listaElem ** kopia;
-				            if(czySkierowany)
-				                kopia = kopiaLisNast();
-				            euler[czySkierowany]();
-				            delete [] lisNast;
-				            if(czySkierowany)
-				                lisNast = kopia;
-				            delete [] kopia;
-				            if(!czySkierowany)
-				                naprawMacSas();
-						}*/
 						cykle[j]();
 						endx = chrono::steady_clock::now();
 						pomiary[k]=chrono::duration_cast<chrono::milliseconds>(endx - start).count();
 					}
 					zapisz(pomiary, i, pliki[s][czySkierowany][j]);
-				}
+				}*/
 				wysw[czySkierowany]();
 				usun[czySkierowany]();
 			}
